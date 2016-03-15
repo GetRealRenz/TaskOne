@@ -1,0 +1,23 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="MyDivider">
+       <item name="android:layout_marginBottom">@dimen/divider_margin_up_down</item>
+        <item name="android:layout_marginTop">@dimen/divider_margin_up_down</item>
+        <item name="android:background">@color/dividerColor</item>
+        <item name="android:onClick">OnViewClick</item>
+    </style>
+    <style name="DatesStyle">
+        <item name="android:textSize">@dimen/dates_text_size</item>
+        <item name="android:gravity">end</item>
+        <item name="android:textColor">@color/someTextColor</item>
+        <item name="android:onClick">OnViewClick</item>
+    </style>
+
+</resources>

@@ -1,0 +1,11 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="divider_margin_up_down">10dp</dimen>
+    <dimen name="divider_margin_start_end">15dp</dimen>
+    <dimen name="in_work_padding">10dp</dimen>
+    <dimen name="some_text_size">18sp</dimen>
+    <dimen name="dates_text_size">15sp</dimen>
+    <dimen name="recycler_min_height">250dp</dimen>
+</resources>

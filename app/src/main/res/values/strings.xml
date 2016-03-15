@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">YalantisTaskOne</string>
+    <string name="tx_title">Public service</string>
+    <string name="tx_status">In work</string>
+    <string name="tx_created">Created</string>
+    <string name="tx_registred">Registred</string>
+    <string name="tx_resolve">Resolve to</string>
+    <string name="tx_responsible">Responsible</string>
+    <string name="tx_sometext">Opened hatch(near the billboard),the area of 18 and 19 trams turn to the Peace avenue from the Donetsk roadway</string>
+    <string name="tx_created_value">February 25 2016</string>
+    <string name="tx_registred_value">February 26 2016</string>
+    <string name="tx_resolve_value">February 29 2016</string>
+    <string name="tx_responsible_value">Dnipropetrovsk MVK()</string>
+</resources>
