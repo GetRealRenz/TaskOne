@@ -8,4 +8,7 @@
     <dimen name="some_text_size">18sp</dimen>
     <dimen name="dates_text_size">15sp</dimen>
     <dimen name="recycler_min_height">250dp</dimen>
+    <dimen name="recycler_item_width">160dp</dimen>
+    <dimen name="recycler_item_height">180dp</dimen>
+    <dimen name="recycler_item_margin">5dp</dimen>
 </resources>

@@ -1,63 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:onClick="OnViewClick"
+    style="@style/MainView"
     tools:context=".activities.MainActivity">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/divider_margin_start_end"
-        android:layout_marginStart="@dimen/divider_margin_start_end"
-        android:focusableInTouchMode="false"
-        android:onClick="OnViewClick"
-        android:scrollbars="horizontal">
+    <RelativeLayout style="@style/RelativeStyle">
 
         <TextView
             android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/divider_margin_up_down"
-            android:layout_marginTop="@dimen/divider_margin_up_down"
-            android:onClick="OnViewClick"
-            android:text="@string/tx_title"
-            android:textColor="@color/someTextColor"
-            android:textSize="@dimen/some_text_size" />
+            style="@style/HeaderStyle"
+            android:text="@string/tx_title" />
 
         <TextView
             android:id="@+id/status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/StatusStyle"
             android:layout_below="@+id/title"
-            android:background="@drawable/round_textview"
-            android:onClick="OnViewClick"
-            android:paddingEnd="@dimen/in_work_padding"
-            android:paddingStart="@dimen/in_work_padding"
-            android:text="@string/tx_status"
-            android:textColor="@color/statusTextColor" />
+            android:text="@string/tx_status" />
 
         <View
             android:id="@+id/divider1"
             style="@style/MyDivider"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
             android:layout_below="@+id/status" />
 
         <TextView
             android:id="@+id/created"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/TitleStyle"
             android:layout_below="@+id/divider1"
-            android:onClick="OnViewClick"
             android:text="@string/tx_created" />
 
         <TextView
-            android:id="@+id/textView"
-            style="@style/DatesStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/DateStyle"
             android:layout_alignEnd="@+id/divider1"
             android:layout_alignRight="@+id/divider1"
             android:layout_alignTop="@+id/created"
@@ -66,22 +38,16 @@
         <View
             android:id="@+id/divider2"
             style="@style/MyDivider"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
             android:layout_below="@+id/created" />
 
         <TextView
             android:id="@+id/registered"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/TitleStyle"
             android:layout_below="@id/divider2"
-            android:onClick="OnViewClick"
             android:text="@string/tx_registred" />
 
         <TextView
-            style="@style/DatesStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/DateStyle"
             android:layout_above="@+id/divider3"
             android:layout_alignEnd="@+id/divider2"
             android:layout_alignRight="@+id/divider2"
@@ -90,22 +56,16 @@
         <View
             android:id="@+id/divider3"
             style="@style/MyDivider"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
             android:layout_below="@+id/registered" />
 
         <TextView
             android:id="@+id/complete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/TitleStyle"
             android:layout_below="@id/divider3"
-            android:onClick="OnViewClick"
             android:text="@string/tx_resolve" />
 
         <TextView
-            style="@style/DatesStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/DateStyle"
             android:layout_above="@+id/divider4"
             android:layout_alignEnd="@+id/divider3"
             android:layout_alignRight="@+id/divider3"
@@ -114,22 +74,16 @@
         <View
             android:id="@+id/divider4"
             style="@style/MyDivider"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
             android:layout_below="@+id/complete" />
 
         <TextView
             android:id="@+id/responsible"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/TitleStyle"
             android:layout_below="@id/divider4"
-            android:onClick="OnViewClick"
             android:text="@string/tx_responsible" />
 
         <TextView
-            style="@style/DatesStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/DateStyle"
             android:layout_above="@+id/divider5"
             android:layout_alignEnd="@+id/divider4"
             android:layout_alignRight="@+id/divider4"
@@ -138,29 +92,17 @@
         <View
             android:id="@+id/divider5"
             style="@style/MyDivider"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
             android:layout_below="@+id/responsible" />
 
         <TextView
-            android:id="@+id/someText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/some_text"
+            style="@style/SomeTextStyle"
             android:layout_below="@id/divider5"
-            android:onClick="OnViewClick"
-            android:paddingBottom="@dimen/divider_margin_up_down"
-            android:text="@string/tx_sometext"
-            android:textColor="@color/someTextColor"
-            android:textSize="@dimen/dates_text_size" />
+            android:text="@string/tx_sometext" />
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/imageRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentBottom="true"
-            android:layout_below="@+id/someText"
-            android:minHeight="@dimen/recycler_min_height"
-            android:onClick="OnViewClick" />
-
+            android:id="@+id/image_recycler_view"
+            style="@style/RecyclerStyle"
+            android:layout_below="@+id/some_text" />
     </RelativeLayout>
 </ScrollView>

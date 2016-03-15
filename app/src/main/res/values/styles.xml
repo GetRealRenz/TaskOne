@@ -11,13 +11,73 @@
        <item name="android:layout_marginBottom">@dimen/divider_margin_up_down</item>
         <item name="android:layout_marginTop">@dimen/divider_margin_up_down</item>
         <item name="android:background">@color/dividerColor</item>
-        <item name="android:onClick">OnViewClick</item>
+        <item name="android:onClick">onViewClick</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
     </style>
-    <style name="DatesStyle">
+    <style name="DateStyle">
         <item name="android:textSize">@dimen/dates_text_size</item>
         <item name="android:gravity">end</item>
         <item name="android:textColor">@color/someTextColor</item>
-        <item name="android:onClick">OnViewClick</item>
+        <item name="android:onClick">onViewClick</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
     </style>
-
+    <style name="TitleStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:onClick">onViewClick</item>
+    </style>
+    <style name="SomeTextStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:onClick">onViewClick</item>
+        <item name="android:paddingBottom">@dimen/divider_margin_up_down</item>
+        <item name="android:textColor">@color/someTextColor</item>
+        <item name="android:textSize">@dimen/dates_text_size</item>
+    </style>
+    <style name="RecyclerStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:onClick">onViewClick</item>
+        <item name="android:minHeight">@dimen/recycler_min_height</item>
+    </style>
+    <style name="RecyclerItemStyle">
+        <item name="android:layout_width">@dimen/recycler_item_width</item>
+        <item name="android:layout_height">@dimen/recycler_item_height</item>
+        <item name="android:layout_marginRight">@dimen/recycler_item_margin</item>
+        <item name="android:layout_marginLeft">@dimen/recycler_item_margin</item>
+    </style>
+    <style name="StatusStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/round_textview</item>
+        <item name="android:onClick">onViewClick</item>
+        <item name="android:paddingLeft">@dimen/in_work_padding</item>
+        <item name="android:paddingRight">@dimen/in_work_padding</item>
+        <item name="android:textColor">@color/statusTextColor</item>
+    </style>
+    <style name="HeaderStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/divider_margin_up_down</item>
+        <item name="android:layout_marginBottom">@dimen/divider_margin_up_down</item>
+        <item name="android:textSize">@dimen/some_text_size</item>
+        <item name="android:textColor">@color/someTextColor</item>
+        <item name="android:onClick">onViewClick</item>
+    </style>
+    <style name="RelativeStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">@dimen/divider_margin_start_end</item>
+        <item name="android:layout_marginRight">@dimen/divider_margin_start_end</item>
+        <item name="android:focusableInTouchMode">false</item>
+        <item name="android:onClick">onViewClick</item>
+    </style>
+    <style name="MainView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:onClick">onViewClick</item>
+    </style>
 </resources>

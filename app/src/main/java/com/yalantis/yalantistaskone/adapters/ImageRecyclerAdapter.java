@@ -17,53 +17,57 @@ import com.yalantis.yalantistaskone.R;
  */
 public class ImageRecyclerAdapter extends RecyclerView.Adapter<ImageRecyclerAdapter.ViewHolder> {
 
-    private String[] imageUrls;
-    private Context context;
+    private String[] mImageUrls;
+    private Context mContext;
+    private static final int IMAGE_WIDTH = 160;
+    private static final int IMAGE_HEIGHT = 180;
 
-    public ImageRecyclerAdapter(String[] ImageIds, Context context) {
-        this.imageUrls = ImageIds;
-        this.context = context;
+    public ImageRecyclerAdapter(String[] mImageUrls, Context mContext) {
+        this.mImageUrls = mImageUrls;
+        this.mContext = mContext;
     }
 
     @Override
     public ImageRecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.recycler_view_item, parent, false);
-
         return new ViewHolder(view);
     }
 
-    /*
-    *Loading images from Internet with Picasso and showing them in RecyclerView
-    * When user preses on image control name will be shown
-    */
+    /**
+     * Loading images from Internet with Picasso and showing them in RecyclerView
+     * When user preses on image control name will be shown
+     */
+
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-        Picasso.with(context).load(imageUrls[position]).resize(160, 180)
-                .into(holder.imageView);
-        holder.imageView.setOnClickListener(new View.OnClickListener() {
+        Picasso.with(mContext).load(mImageUrls[position]).resize(IMAGE_WIDTH, IMAGE_HEIGHT).centerCrop()
+                .into(holder.mImageView);
+        holder.mImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String imageName = holder.imageView.getClass().getSimpleName() + " " + (position + 1);
-                Toast.makeText(context, imageName
+                String imageName = holder.mImageView.getClass().getSimpleName() + " " + (position + 1);
+                Toast.makeText(mContext, imageName
                         , Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-
     @Override
     public int getItemCount() {
-        return imageUrls.length;
+        return mImageUrls.length;
     }
 
-    /*Simple ViewHolder with only one item*/
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        private ImageView imageView;
+    /**
+     * Simple ViewHolder with only one item
+     */
 
-        public ViewHolder(View itemView) {
-            super(itemView);
-            this.imageView = (ImageView) itemView.findViewById(R.id.recyclerItem);
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        private ImageView mImageView;
+
+        public ViewHolder(View mItemView) {
+            super(mItemView);
+            this.mImageView = (ImageView) mItemView.findViewById(R.id.recycler_item);
 
         }
     }
