@@ -17,7 +17,7 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity {
 
     @Bind(R.id.image_recycler_view)
-   protected RecyclerView mRecyclerView;
+    protected RecyclerView mRecyclerView;
 
     /*Dummy image Urls*/
     private static String[] mImageUrls = {
@@ -32,11 +32,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if (getSupportActionBar() != null)
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         initRecycler();
     }
 
-    /** Closing app then user presses home button*/
+    /**
+     * Closing app then user presses home button
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -45,12 +48,16 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    /** Showing a toast every time user presses a control */
+    /**
+     * Showing a toast every time user presses a control
+     */
     public void onViewClick(View view) {
         Toast.makeText(this, view.getClass().getSimpleName(), Toast.LENGTH_SHORT).show();
     }
 
-    /** Init our Recycler View */
+    /**
+     * Init our Recycler View
+     */
     private void initRecycler() {
         LinearLayoutManager manager = new LinearLayoutManager(this);
         manager.setOrientation(LinearLayoutManager.HORIZONTAL);
