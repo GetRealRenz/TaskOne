@@ -23,13 +23,12 @@ import butterknife.ButterKnife;
 /**
  * Created by Антон on 17.04.2016.
  */
-public class MainFragment extends Fragment {
+public class MainFragment extends BaseFragment {
 
     @Bind(R.id.pager)
     ViewPager mPager;
     @Bind(R.id.tab)
     TabLayout mTabs;
-    private PagerAdapter mAdapter;
 
     public static MainFragment newInstance() {
         return new MainFragment();
@@ -38,18 +37,23 @@ public class MainFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_main, container, false);
-        ButterKnife.bind(this, view);
+        View view = super.onCreateView(inflater, container, savedInstanceState);
         initView();
         return view;
     }
 
+    @Nullable
+    @Override
+    public int getLayout() {
+        return R.layout.fragment_main;
+    }
+
     private void setupPager(ViewPager pager) {
-        mAdapter = new PagerAdapter(getChildFragmentManager());
-        mAdapter.addFragment(BlankFragment.newInstance(1), getString(R.string.in_work));
-        mAdapter.addFragment(BlankFragment.newInstance(3), getString(R.string.is_done));
-        mAdapter.addFragment(LastFragment.newInstance(2), getString(R.string.undone));
-        pager.setAdapter(mAdapter);
+        PagerAdapter adapter = new PagerAdapter(getChildFragmentManager());
+        adapter.addFragment(BlankFragment.newInstance(1), getString(R.string.in_work));
+        adapter.addFragment(BlankFragment.newInstance(3), getString(R.string.is_done));
+        adapter.addFragment(LastFragment.newInstance(2), getString(R.string.undone));
+        pager.setAdapter(adapter);
     }
 
     private void initView() {

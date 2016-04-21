@@ -13,12 +13,13 @@ import android.view.MenuItem;
 
 import com.yalantis.yalantistaskone.R;
 import com.yalantis.yalantistaskone.ui.App;
+import com.yalantis.yalantistaskone.ui.view.fragment.BaseFragment;
 import com.yalantis.yalantistaskone.ui.view.fragment.MainFragment;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     @Bind(R.id.main_toolbar)
     Toolbar mToolbar;
     @Bind(R.id.drawer)
@@ -34,8 +35,7 @@ public class MainActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setTitle(R.string.all_tasks);
         }
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.container_main, MainFragment.newInstance()).commit();
+        switchFragment(MainFragment.newInstance());
         initDrawer();
     }
 
@@ -55,5 +55,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public int getFragmentContainer() {
+        return R.id.container_main;
     }
 }

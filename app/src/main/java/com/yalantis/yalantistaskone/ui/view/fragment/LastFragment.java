@@ -1,6 +1,7 @@
 package com.yalantis.yalantistaskone.ui.view.fragment;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,12 +37,17 @@ public class LastFragment extends BaseFragment implements TaskContract.View, Lis
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_list, container, false);
-        ButterKnife.bind(this, view);
+        View view = super.onCreateView(inflater, container, savedInstanceState);
         TaskContract.Presenter presenter = new TasksPresenter();
         presenter.attachView(this);
         presenter.loadModel(getArguments().getInt(STATUS));
         return view;
+    }
+
+    @Nullable
+    @Override
+    public int getLayout() {
+        return R.layout.fragment_list;
     }
 
 

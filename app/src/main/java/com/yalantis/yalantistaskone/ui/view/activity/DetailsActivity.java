@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.yalantis.yalantistaskone.R;
 import com.yalantis.yalantistaskone.ui.App;
+import com.yalantis.yalantistaskone.ui.util.Constants;
 import com.yalantis.yalantistaskone.ui.util.SecondsToDate;
 import com.yalantis.yalantistaskone.ui.view.adapters.ImageRecyclerAdapter;
 import com.yalantis.yalantistaskone.ui.contract.TaskDetailContract;
@@ -99,20 +100,17 @@ public class DetailsActivity extends AppCompatActivity implements TaskDetailCont
         description.setText(data.getDescription());
         registred.setText(date.toDate(data.getRegistred()));
         responsible.setText(data.getResponsible());
-        final String inwork = getString(R.string.in_work);
-        final String done = getString(R.string.done);
-        final String undone = getString(R.string.undone);
         switch (data.getStatus()) {
-            case "В роботі":
-                status.setText(inwork);
+            case Constants.IN_WORK:
+                status.setText(Constants.IN_WORK);
                 status.setBackground(ContextCompat.getDrawable(this, R.drawable.textview_inwork));
                 break;
-            case "Виконано":
-                status.setText(done);
+            case Constants.DONE:
+                status.setText(Constants.DONE);
                 status.setBackground(ContextCompat.getDrawable(this, R.drawable.textview_done));
                 break;
-            case "Не виконано":
-                status.setText(undone);
+            case Constants.UNDONE:
+                status.setText(Constants.UNDONE);
                 status.setBackground(ContextCompat.getDrawable(this, R.drawable.textview_undone));
                 break;
         }

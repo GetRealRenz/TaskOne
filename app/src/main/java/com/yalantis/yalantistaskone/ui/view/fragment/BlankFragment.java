@@ -2,6 +2,7 @@ package com.yalantis.yalantistaskone.ui.view.fragment;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -49,13 +50,18 @@ public class BlankFragment extends BaseFragment implements TaskContract.View, Bl
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_blank, container, false);
-        ButterKnife.bind(this, view);
+        View view = super.onCreateView(inflater, container, savedInstanceState);
         TaskContract.Presenter Presenter = new TasksPresenter();
         Presenter.attachView(this);
         Presenter.loadModel(getArguments().getInt(STATUS));
         // Inflate the layout for this fragment
         return view;
+    }
+
+    @Nullable
+    @Override
+    public int getLayout() {
+        return R.layout.fragment_blank;
     }
 
 

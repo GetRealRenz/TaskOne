@@ -1,5 +1,6 @@
 package com.yalantis.yalantistaskone.ui.util;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.support.v4.content.ContextCompat;
 
@@ -60,38 +61,38 @@ public class InitMock {
                 }
                 case XmlPullParser.START_TAG: {
                     name = parser.getName();
-                    if (name.equals("task")) {
+                    if (name.equals(Constants.TASK)) {
                         mModel = new DataModel();
                     } else if (mModel != null) {
                         switch (name) {
-                            case "title":
+                            case Constants.TITLE:
                                 mModel.setTitle(parser.nextText());
                                 break;
-                            case "likes":
+                            case Constants.LIKES:
                                 mModel.setLikes(parser.nextText());
                                 break;
-                            case "address":
+                            case Constants.ADDRESS:
                                 mModel.setAddress(parser.nextText());
                                 break;
-                            case "date":
+                            case Constants.DATE:
                                 mModel.setDate(parser.nextText());
                                 break;
-                            case "daysleft":
+                            case Constants.DEADLINE:
                                 mModel.setDaysleft(parser.nextText());
                                 break;
-                            case "description":
+                            case Constants.DESCRIPTION:
                                 mModel.setDescription(parser.nextText());
                                 break;
-                            case "responsible":
+                            case Constants.RESPONSIBLE:
                                 mModel.setResponsible(parser.nextText());
                                 break;
-                            case "status":
+                            case Constants.STATUS:
                                 mModel.setStatus(parser.nextText());
                                 break;
-                            case "registred":
+                            case Constants.REGISTRED:
                                 mModel.setRegistred(parser.nextText());
                                 break;
-                            case "imgid": {
+                            case Constants.IMG_ID: {
                                 Resources resources = App.getContext().getResources();
                                 int id = resources.getIdentifier(parser.nextText(), "drawable", App.getContext().getPackageName());
                                 mModel.setCategory(ContextCompat.getDrawable(App.getContext(), id));
@@ -103,11 +104,11 @@ public class InitMock {
                 }
                 case XmlPullParser.END_TAG: {
                     name = parser.getName();
-                    if (name.equalsIgnoreCase("task") && mModel != null && mModel.getStatus().equals("Виконано")) {
+                    if (name.equalsIgnoreCase(Constants.TASK) && mModel != null && mModel.getStatus().equals(Constants.DONE)) {
                         mDone.add(mModel);
-                    } else if (name.equalsIgnoreCase("task") && mModel != null && mModel.getStatus().equals("В роботі")) {
+                    } else if (name.equalsIgnoreCase(Constants.TASK) && mModel != null && mModel.getStatus().equals(Constants.IN_WORK)) {
                         mInWork.add(mModel);
-                    } else if (name.equalsIgnoreCase("task") && mModel != null && mModel.getStatus().equals("Не виконано")) {
+                    } else if (name.equalsIgnoreCase(Constants.TASK) && mModel != null && mModel.getStatus().equals(Constants.UNDONE)) {
                         mUndone.add(mModel);
                     }
                 }
