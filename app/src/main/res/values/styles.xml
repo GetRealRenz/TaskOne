@@ -8,6 +8,17 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+
+    </style>
+
     <style name="MyDivider">
         <item name="android:background">@color/dividerColor</item>
         <item name="android:onClick">onViewClick</item>
@@ -27,6 +38,7 @@
     <style name="TitleStyle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/title</item>
         <item name="android:onClick">onViewClick</item>
     </style>
 
@@ -53,7 +65,7 @@
     <style name="StatusStyle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@drawable/round_textview</item>
+        <item name="android:background">@drawable/textview_inwork</item>
         <item name="android:onClick">onViewClick</item>
         <item name="android:textColor">@color/statusTextColor</item>
     </style>
@@ -74,8 +86,105 @@
     </style>
 
     <style name="MainView">
+        <item name="android:background">@color/bgColor</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:onClick">onViewClick</item>
+    </style>
+
+    <style name="Tx">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="Tx.Likes" parent="Tx">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/likes</item>
+    </style>
+
+    <style name="Img">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+
+    <style name="Tx.Title" parent="Tx">
+        <item name="android:textSize">@dimen/title_tx_size</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="Tx.Drawer" parent="Tx">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingLeft">@dimen/drawer_left</item>
+        <item name="android:paddingTop">@dimen/drawer_padding</item>
+        <item name="android:paddingBottom">@dimen/drawer_padding</item>
+        <item name="android:textSize">@dimen/drawer_tx_size</item>
+        <item name="android:gravity">bottom</item>
+        <item name="android:textColor">@color/statusTextColor</item>
+    </style>
+
+    <style name="Tx.Date" parent="Tx">
+        <item name="android:textSize">@dimen/date_tx_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/date</item>
+    </style>
+
+    <style name="DrawerStyle">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+
+    <style name="Coordinator">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@drawable/gradient_bg</item>
+    </style>
+
+    <style name="Toolbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="android:background">?attr/colorPrimary</item>
+    </style>
+
+    <style name="Fab">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">end|bottom</item>
+        <item name="android:scaleType">center</item>
+        <item name="android:tint">@android:color/white</item>
+        <item name="android:src">@drawable/ic_add</item>
+    </style>
+
+    <style name="NavigationView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_gravity">start</item>
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+
+    <style name="BaseView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:focusableInTouchMode">true</item>
+    </style>
+
+    <style name="CardView">
+        <item name="android:layout_height">@dimen/card_size</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <style name="Tab">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+
+    <style name="Header">
+        <item name="android:layout_height">@dimen/header_size</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:orientation">vertical</item>
     </style>
 </resources>

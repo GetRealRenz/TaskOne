@@ -11,4 +11,26 @@
     <dimen name="recycler_item_width">160dp</dimen>
     <dimen name="recycler_item_height">180dp</dimen>
     <dimen name="recycler_item_margin">5dp</dimen>
+    <dimen name="marg_cat_bot">20dp</dimen>
+    <dimen name="marg_cat_top">20dp</dimen>
+    <dimen name="drawable_padding">8dp</dimen>
+    <dimen name="likes_padding">19dp</dimen>
+    <dimen name="div_mrg_right">20dp</dimen>
+    <dimen name="title_right">20dp</dimen>
+    <dimen name="addr_mrg_top">5dp</dimen>
+    <dimen name="card_mrg">8dp</dimen>
+    <dimen name="card_radius">16dp</dimen>
+    <dimen name="img_width">80dp</dimen>
+    <dimen name="div_size">1dp</dimen>
+    <dimen name="deadline_mrg">14dp</dimen>
+    <dimen name="tab_max_width">0dp</dimen>
+    <dimen name="tab_indicator_height">2dp</dimen>
+    <dimen name="header_size">160dp</dimen>
+    <dimen name="card_size">126dp</dimen>
+    <dimen name="title_tx_size">16sp</dimen>
+    <dimen name="drawer_tx_size">24sp</dimen>
+    <dimen name="drawer_padding">24dp</dimen>
+    <dimen name="drawer_left">16dp</dimen>
+    <dimen name="date_tx_size">14sp</dimen>
+
 </resources>

@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#557cac</color>
-    <color name="colorPrimaryDark">#446389</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#537bae</color>
+    <color name="colorPrimaryDark">#43628a</color>
+    <color name="colorAccent">#ff9c26</color>
     <color name="dividerColor">#d8d8d8</color>
+    <color name="bgColor">#ebebeb</color>
     <color name="someTextColor">#000000</color>
     <color name="statusTextColor">#ffffff</color>
+    <color name="gray">#8d8d8d</color>
+    <color name="title">#a4a4a4</color>
+    <color name="likes">#cccccc</color>
+    <color name="date">#cfcfcf</color>
+    <color name="unselected">#ccd8e7</color>
 </resources>

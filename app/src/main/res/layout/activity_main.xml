@@ -1,127 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/MainView"
-    tools:context=".activities.MainActivity">
+    android:id="@+id/drawer"
+    style="@style/DrawerStyle"
+    tools:openDrawer="start">
 
-    <RelativeLayout
-        style="@style/RelativeStyle"
-        android:layout_marginLeft="@dimen/divider_margin_start_end"
-        android:layout_marginRight="@dimen/divider_margin_start_end">
+    <android.support.design.widget.CoordinatorLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        style="@style/Coordinator"
+        tools:context="com.yalantis.yalantistaskone.ui.view.MainActivity">
 
-        <TextView
-            android:id="@+id/title"
-            style="@style/HeaderStyle"
-            android:layout_marginBottom="@dimen/divider_margin_up_down"
-            android:layout_marginTop="@dimen/divider_margin_up_down"
-            android:text="@string/tx_title" />
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/status"
-            style="@style/StatusStyle"
-            android:layout_below="@+id/title"
-            android:paddingLeft="@dimen/in_work_padding"
-            android:paddingRight="@dimen/in_work_padding"
-            android:text="@string/tx_status" />
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/main_toolbar"
+                style="@style/Toolbar"
+                app:layout_scrollFlags="scroll|enterAlways" />
+        </android.support.design.widget.AppBarLayout>
 
-        <View
-            android:id="@+id/divider1"
-            style="@style/MyDivider"
-            android:layout_below="@+id/status"
-            android:layout_marginBottom="@dimen/divider_margin_up_down"
-            android:layout_marginTop="@dimen/divider_margin_up_down" />
+        <FrameLayout
+            android:id="@+id/container_main"
+            style="@style/BaseView"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-        <TextView
-            android:id="@+id/created"
-            style="@style/TitleStyle"
-            android:layout_below="@+id/divider1"
-            android:text="@string/tx_created" />
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_add"
+            style="@style/Fab"
 
-        <TextView
-            style="@style/DateStyle"
-            android:layout_alignEnd="@+id/divider1"
-            android:layout_alignRight="@+id/divider1"
-            android:layout_alignTop="@+id/created"
-            android:text="@string/tx_created_value" />
+            app:fabSize="normal"
+            app:layout_behavior="com.yalantis.yalantistaskone.ui.util.FabHide" />
+    </android.support.design.widget.CoordinatorLayout>
 
-        <View
-            android:id="@+id/divider2"
-            style="@style/MyDivider"
-            android:layout_below="@+id/created"
-            android:layout_marginBottom="@dimen/divider_margin_up_down"
-            android:layout_marginTop="@dimen/divider_margin_up_down" />
-
-        <TextView
-            android:id="@+id/registered"
-            style="@style/TitleStyle"
-            android:layout_below="@id/divider2"
-            android:text="@string/tx_registred" />
-
-        <TextView
-            style="@style/DateStyle"
-            android:layout_above="@+id/divider3"
-            android:layout_alignEnd="@+id/divider2"
-            android:layout_alignRight="@+id/divider2"
-            android:text="@string/tx_registred_value" />
-
-        <View
-            android:id="@+id/divider3"
-            style="@style/MyDivider"
-            android:layout_below="@+id/registered"
-            android:layout_marginBottom="@dimen/divider_margin_up_down"
-            android:layout_marginTop="@dimen/divider_margin_up_down" />
-
-        <TextView
-            android:id="@+id/complete"
-            style="@style/TitleStyle"
-            android:layout_below="@id/divider3"
-            android:text="@string/tx_resolve" />
-
-        <TextView
-            style="@style/DateStyle"
-            android:layout_above="@+id/divider4"
-            android:layout_alignEnd="@+id/divider3"
-            android:layout_alignRight="@+id/divider3"
-            android:text="@string/tx_resolve_value" />
-
-        <View
-            android:id="@+id/divider4"
-            style="@style/MyDivider"
-            android:layout_below="@+id/complete"
-            android:layout_marginBottom="@dimen/divider_margin_up_down"
-            android:layout_marginTop="@dimen/divider_margin_up_down" />
-
-        <TextView
-            android:id="@+id/responsible"
-            style="@style/TitleStyle"
-            android:layout_below="@id/divider4"
-            android:text="@string/tx_responsible" />
-
-        <TextView
-            style="@style/DateStyle"
-            android:layout_above="@+id/divider5"
-            android:layout_alignEnd="@+id/divider4"
-            android:layout_alignRight="@+id/divider4"
-            android:text="@string/tx_responsible_value" />
-
-        <View
-            android:id="@+id/divider5"
-            style="@style/MyDivider"
-            android:layout_below="@+id/responsible"
-            android:layout_marginBottom="@dimen/divider_margin_up_down"
-            android:layout_marginTop="@dimen/divider_margin_up_down" />
-
-        <TextView
-            android:id="@+id/some_text"
-            style="@style/SomeTextStyle"
-            android:layout_below="@id/divider5"
-            android:paddingBottom="@dimen/divider_margin_up_down"
-            android:text="@string/tx_sometext" />
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/image_recycler_view"
-            style="@style/RecyclerStyle"
-            android:layout_alignParentBottom="true"
-            android:layout_below="@+id/some_text" />
-    </RelativeLayout>
-</ScrollView>
+    <android.support.design.widget.NavigationView
+        android:id="@+id/drawer_view"
+        style="@style/NavigationView"
+        app:headerLayout="@layout/nav_header"
+        app:itemTextColor="@android:color/black"
+        app:menu="@menu/drawer_items" />
+</android.support.v4.widget.DrawerLayout>

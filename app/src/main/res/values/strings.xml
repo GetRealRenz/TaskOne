@@ -11,4 +11,23 @@
     <string name="tx_registred_value">February 26 2016</string>
     <string name="tx_resolve_value">February 29 2016</string>
     <string name="tx_responsible_value">Dnipropetrovsk MVK()</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="in_work">В роботі</string>
+    <string name="is_done">Виконано</string>
+    <string name="undone">Не виконано</string>
+    <string name="filter">Filter</string>
+    <string name="e_contact">e-contact</string>
+    <string name="all_probs">Все проблемы</string>
+    <string name="on_map">На карте</string>
+    <string name="login">Войти в аккаунт</string>
+    <string name="all_tasks">Всі звернення</string>
+    <string name="drawer_open">Drawer open</string>
+    <string name="drawer_close">Drawer closed</string>
+    <string name="done">Виконано</string>
+    <string-array name="drawer_items">
+        <item>Usi zvernennya</item>
+        <item>Zvernennya na mapi</item>
+    </string-array>
 </resources>

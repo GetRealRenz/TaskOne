@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/draw_item_all"
+            android:icon="@drawable/doc"
+            android:title="@string/all_probs" />
+        <item
+            android:id="@+id/draw_item_map"
+            android:icon="@drawable/map"
+            android:title="@string/on_map" />
+    </group>
+    <group
+        android:id="@+id/menu_bot"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/nav_login"
+            android:title="@string/login" />
+    </group>
+</menu>
