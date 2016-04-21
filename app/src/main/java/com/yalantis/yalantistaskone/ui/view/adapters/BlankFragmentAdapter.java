@@ -71,7 +71,7 @@ public class BlankFragmentAdapter extends RecyclerView.Adapter<BlankFragmentAdap
 
         public void bindData(DataModel data) {
             mModel = data;
-            SecondsToDate toDate=new SecondsToDate();
+            SecondsToDate toDate = new SecondsToDate();
             title.setText(data.getTitle());
             likes.setText(data.getLikes());
             address.setText(data.getAddress());

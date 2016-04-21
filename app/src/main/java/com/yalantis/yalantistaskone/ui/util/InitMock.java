@@ -19,6 +19,9 @@ import java.util.List;
  * Created by Антон on 17.04.2016.
  */
 public class InitMock {
+    /**
+     * All this class is a mock, it will be newer used while working with real data(rest,http)
+     */
     private List<DataModel> mDone;
     private List<DataModel> mInWork;
     private List<DataModel> mUndone;
@@ -44,6 +47,9 @@ public class InitMock {
 
     }
 
+    /**
+     * Parsing mock XML from assets
+     */
     private void parseXML(XmlPullParser parser) throws XmlPullParserException, IOException {
         int event = parser.getEventType();
         while (event != XmlPullParser.END_DOCUMENT) {
@@ -110,6 +116,9 @@ public class InitMock {
         }
     }
 
+    /**
+     * Picking right data basing on status of task
+     */
     public List<DataModel> getModels(int status) {
         switch (status) {
             case 1:

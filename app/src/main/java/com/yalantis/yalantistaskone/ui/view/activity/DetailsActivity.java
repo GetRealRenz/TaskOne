@@ -44,13 +44,6 @@ public class DetailsActivity extends AppCompatActivity implements TaskDetailCont
     TextView registred;
     @Bind(R.id.tx_responsible)
     TextView responsible;
-
-    public static Intent newIntent(@NonNull Context context, @NonNull DataModel model) {
-        Intent intent = new Intent(context, DetailsActivity.class);
-        intent.putExtra(KEY_MODEL, model);
-        return intent;
-    }
-
     /*Dummy image Urls*/
     private final static String[] mImageUrls = {
             "http://i.imgur.com/rFLNqWI.jpg",
@@ -58,6 +51,12 @@ public class DetailsActivity extends AppCompatActivity implements TaskDetailCont
             "http://i.imgur.com/rT5vXE1.jpg",
             "http://i.imgur.com/aIy5R2k.jpg",
     };
+
+    public static Intent newIntent(@NonNull Context context, @NonNull DataModel model) {
+        Intent intent = new Intent(context, DetailsActivity.class);
+        intent.putExtra(KEY_MODEL, model);
+        return intent;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

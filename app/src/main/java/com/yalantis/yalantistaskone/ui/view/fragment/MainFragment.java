@@ -29,7 +29,7 @@ public class MainFragment extends Fragment {
     ViewPager mPager;
     @Bind(R.id.tab)
     TabLayout mTabs;
-    private  PagerAdapter mAdapter;
+    private PagerAdapter mAdapter;
 
     public static MainFragment newInstance() {
         return new MainFragment();

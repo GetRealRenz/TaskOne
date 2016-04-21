@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
  * Created by Антон on 20.04.2016.
  */
 public class SecondsToDate {
-
+    /**Converting Seconds to real date*/
     public String toDate(String millis) {
         DateFormat formatter = SimpleDateFormat.getDateInstance();
         Calendar calendar = Calendar.getInstance();
