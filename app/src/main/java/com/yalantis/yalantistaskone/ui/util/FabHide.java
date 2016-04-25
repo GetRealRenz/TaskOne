@@ -1,5 +1,6 @@
 package com.yalantis.yalantistaskone.ui.util;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -16,6 +17,7 @@ import com.squareup.picasso.Picasso;
 /**
  * This class is for animate hide of Fab and its used in XML not in code
  */
+@SuppressWarnings("unused")
 public class FabHide extends FloatingActionButton.Behavior {
     public FabHide(Context context, AttributeSet attributeSet) {
         super();

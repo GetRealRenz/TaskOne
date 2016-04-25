@@ -2,7 +2,7 @@ package com.yalantis.yalantistaskone.ui.view.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.yalantis.yalantistaskone.R;
+import com.yalantis.yalantistaskone.ui.util.Constants;
 import com.yalantis.yalantistaskone.ui.view.adapters.PagerAdapter;
 
 import java.util.ArrayList;
@@ -50,9 +51,9 @@ public class MainFragment extends BaseFragment {
 
     private void setupPager(ViewPager pager) {
         PagerAdapter adapter = new PagerAdapter(getChildFragmentManager());
-        adapter.addFragment(BlankFragment.newInstance(1), getString(R.string.in_work));
-        adapter.addFragment(BlankFragment.newInstance(3), getString(R.string.is_done));
-        adapter.addFragment(LastFragment.newInstance(2), getString(R.string.undone));
+        adapter.addFragment(BlankFragment.newInstance(Constants.STATUS_INWORK), getString(R.string.in_work));
+        adapter.addFragment(BlankFragment.newInstance(Constants.STATUS_DONE), getString(R.string.is_done));
+        adapter.addFragment(LastFragment.newInstance(Constants.STATUS_UNDONE), getString(R.string.undone));
         pager.setAdapter(adapter);
     }
 

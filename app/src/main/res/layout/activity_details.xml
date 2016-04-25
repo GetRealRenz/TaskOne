@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/MainView"
-    android:background="#ebebeb"
+    android:background="@color/bgColor"
     tools:context=".ui.view.activity.DetailsActivity">
 
     <RelativeLayout

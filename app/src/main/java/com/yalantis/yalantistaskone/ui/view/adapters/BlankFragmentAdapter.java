@@ -22,7 +22,7 @@ import butterknife.OnClick;
  * Created by Антон on 10.04.2016.
  */
 public class BlankFragmentAdapter extends RecyclerView.Adapter<BlankFragmentAdapter.ViewHolder> {
-    private List<DataModel> mModel;
+    private final List<DataModel> mModel;
     private final ItemClickListener mListener;
 
     public BlankFragmentAdapter(List<DataModel> model, @Nullable ItemClickListener listener) {
@@ -59,7 +59,7 @@ public class BlankFragmentAdapter extends RecyclerView.Adapter<BlankFragmentAdap
         TextView daysLeft;
         @Bind(R.id.img_category)
         ImageView category;
-        private ItemClickListener mItemClickListener;
+        private final ItemClickListener mItemClickListener;
         private DataModel mModel;
 
 
