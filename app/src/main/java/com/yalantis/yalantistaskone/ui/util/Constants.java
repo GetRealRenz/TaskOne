@@ -18,4 +18,9 @@ public class Constants {
     public static final String DONE="Виконано";
     public static final String IN_WORK="В роботі";
     public static final String UNDONE="Не виконано";
+    public static final int STATUS_DONE=3;
+    public static final int STATUS_UNDONE=2;
+    public static final int STATUS_INWORK=1;
+
+
 }

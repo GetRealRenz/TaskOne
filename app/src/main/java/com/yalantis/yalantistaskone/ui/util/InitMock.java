@@ -122,12 +122,12 @@ public class InitMock {
      */
     public List<DataModel> getModels(int status) {
         switch (status) {
-            case 1:
+            case Constants.STATUS_INWORK:
                 return mInWork;
 
-            case 2:
+            case Constants.STATUS_UNDONE:
                 return mUndone;
-            case 3:
+            case Constants.STATUS_DONE:
                 return mDone;
             default:
                 return null;
