@@ -18,7 +18,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                     .replace(getFragmentContainer(), fragment, fragment.getClass().getSimpleName()).addToBackStack(fragment.getClass().getSimpleName()).commit();
         } else {
             getSupportFragmentManager().beginTransaction()
-                    .replace(getFragmentContainer(), fragment, fragment.getClass().getSimpleName()).commit();
+                    .replace(getFragmentContainer(), fragment, fragment.getClass().getSimpleName()).commit(); //[Comment] Copy/Paste code refactor this
         }
     }
 

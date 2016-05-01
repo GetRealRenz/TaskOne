@@ -51,7 +51,7 @@ public class BlankFragment extends BaseFragment implements TaskContract.View, Bl
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-        TaskContract.Presenter Presenter = new TasksPresenter();
+        TaskContract.Presenter Presenter = new TasksPresenter(); //[Comment] NEVER use such names in object names
         Presenter.attachView(this);
         Presenter.loadModel(getArguments().getInt(STATUS));
         // Inflate the layout for this fragment

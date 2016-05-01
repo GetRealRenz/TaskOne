@@ -30,7 +30,7 @@ public class ListAdapter extends BaseAdapter {
     }
 
     public ListAdapter(List<DataModel> mModel, onItemClickListener listener) {
-        this.mModel = mModel;
+        this.mModel = mModel; //[Comment] Wrong argument name
         mListener = listener;
 
     }

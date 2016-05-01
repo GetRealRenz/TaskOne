@@ -39,7 +39,7 @@ public class LastFragment extends BaseFragment implements TaskContract.View, Lis
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
         TaskContract.Presenter presenter = new TasksPresenter();
-        presenter.attachView(this);
+        presenter.attachView(this); //[Comment] Where is detach? Memory leak possible
         presenter.loadModel(getArguments().getInt(STATUS));
         return view;
     }
