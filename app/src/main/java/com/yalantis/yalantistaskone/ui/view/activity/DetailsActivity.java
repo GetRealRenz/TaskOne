@@ -14,7 +14,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.yalantis.yalantistaskone.R;
-import com.yalantis.yalantistaskone.ui.App;
 import com.yalantis.yalantistaskone.ui.util.Constants;
 import com.yalantis.yalantistaskone.ui.util.SecondsToDate;
 import com.yalantis.yalantistaskone.ui.view.adapters.ImageRecyclerAdapter;
@@ -52,6 +51,7 @@ public class DetailsActivity extends AppCompatActivity implements TaskDetailCont
             "http://i.imgur.com/rT5vXE1.jpg",
             "http://i.imgur.com/aIy5R2k.jpg",
     };
+    private TaskDetailContract.Presenter mPresenter;
 
     public static Intent newIntent(@NonNull Context context, @NonNull DataModel model) {
         Intent intent = new Intent(context, DetailsActivity.class);
@@ -63,7 +63,7 @@ public class DetailsActivity extends AppCompatActivity implements TaskDetailCont
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
-        TaskDetailContract.Presenter mPresenter = new TaskDetailPresenter();
+        mPresenter = new TaskDetailPresenter();
         mPresenter.attachView(this);
         DataModel model = getIntent().getParcelableExtra(KEY_MODEL);
         ButterKnife.bind(this);
@@ -88,6 +88,7 @@ public class DetailsActivity extends AppCompatActivity implements TaskDetailCont
     /**
      * Showing a toast every time user presses a control
      */
+    @SuppressWarnings("unused")
     public void onViewClick(View view) {
         Toast.makeText(this, view.getClass().getSimpleName(), Toast.LENGTH_SHORT).show();
     }
@@ -131,5 +132,11 @@ public class DetailsActivity extends AppCompatActivity implements TaskDetailCont
     @Override
     public Context getContext() {
         return this;
+    }
+
+    @Override
+    protected void onDestroy() {
+        mPresenter.detachView();
+        super.onDestroy();
     }
 }

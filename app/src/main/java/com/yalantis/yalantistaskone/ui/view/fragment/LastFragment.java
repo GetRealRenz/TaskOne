@@ -26,6 +26,7 @@ public class LastFragment extends BaseFragment implements TaskContract.View, Lis
     @Bind(R.id.list_container)
     ListView mListView;
     private static final String STATUS = "status";
+    private TaskContract.Presenter mPresenter;
 
     public static LastFragment newInstance(int status) {
         LastFragment fragment = new LastFragment();
@@ -38,9 +39,9 @@ public class LastFragment extends BaseFragment implements TaskContract.View, Lis
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-        TaskContract.Presenter presenter = new TasksPresenter();
-        presenter.attachView(this);
-        presenter.loadModel(getArguments().getInt(STATUS));
+        mPresenter = new TasksPresenter();
+        mPresenter.attachView(this);
+        mPresenter.loadModel(getArguments().getInt(STATUS));
         return view;
     }
 
@@ -59,5 +60,11 @@ public class LastFragment extends BaseFragment implements TaskContract.View, Lis
     @Override
     public void onItemClick(DataModel model) {
         startActivity(DetailsActivity.newIntent(getContext(), model));
+    }
+
+    @Override
+    public void onDestroyView() {
+        mPresenter.detachView();
+        super.onDestroyView();
     }
 }

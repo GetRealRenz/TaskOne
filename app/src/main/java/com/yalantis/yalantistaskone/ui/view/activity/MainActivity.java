@@ -1,19 +1,14 @@
 package com.yalantis.yalantistaskone.ui.view.activity;
 
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
+
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.yalantis.yalantistaskone.R;
-import com.yalantis.yalantistaskone.ui.App;
-import com.yalantis.yalantistaskone.ui.view.fragment.BaseFragment;
 import com.yalantis.yalantistaskone.ui.view.fragment.MainFragment;
 
 import butterknife.Bind;

@@ -29,8 +29,8 @@ public class ListAdapter extends BaseAdapter {
         void onItemClick(DataModel model);
     }
 
-    public ListAdapter(List<DataModel> mModel, onItemClickListener listener) {
-        this.mModel = mModel;
+    public ListAdapter(List<DataModel> model, onItemClickListener listener) {
+        this.mModel = model;
         mListener = listener;
 
     }

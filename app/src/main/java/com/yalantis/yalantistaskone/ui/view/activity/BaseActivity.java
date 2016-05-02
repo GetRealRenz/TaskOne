@@ -1,6 +1,7 @@
 package com.yalantis.yalantistaskone.ui.view.activity;
 
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
 /**
@@ -14,12 +15,15 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public void switchFragment(Fragment fragment, boolean isBackstack) {
         if (isBackstack) {
-            getSupportFragmentManager().beginTransaction()
-                    .replace(getFragmentContainer(), fragment, fragment.getClass().getSimpleName()).addToBackStack(fragment.getClass().getSimpleName()).commit();
+            initFragment(fragment).addToBackStack(fragment.getClass().getSimpleName()).commit();
         } else {
-            getSupportFragmentManager().beginTransaction()
-                    .replace(getFragmentContainer(), fragment, fragment.getClass().getSimpleName()).commit();
+            initFragment(fragment).commit();
         }
+    }
+
+    private FragmentTransaction initFragment(Fragment fragment) {
+        return getSupportFragmentManager().beginTransaction()
+                .replace(getFragmentContainer(), fragment, fragment.getClass().getSimpleName());
     }
 
     abstract public int getFragmentContainer();

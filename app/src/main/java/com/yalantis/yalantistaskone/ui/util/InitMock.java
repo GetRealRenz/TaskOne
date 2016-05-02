@@ -1,6 +1,5 @@
 package com.yalantis.yalantistaskone.ui.util;
 
-import android.content.Context;
 import android.content.res.Resources;
 import android.support.v4.content.ContextCompat;
 

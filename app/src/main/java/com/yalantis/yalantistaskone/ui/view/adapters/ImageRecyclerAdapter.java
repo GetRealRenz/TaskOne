@@ -22,9 +22,9 @@ public class ImageRecyclerAdapter extends RecyclerView.Adapter<ImageRecyclerAdap
     private static final int IMAGE_WIDTH = 160;
     private static final int IMAGE_HEIGHT = 180;
 
-    public ImageRecyclerAdapter(String[] mImageUrls, Context mContext) {
-        this.mImageUrls = mImageUrls;
-        this.mContext = mContext;
+    public ImageRecyclerAdapter(String[] imageUrls, Context context) {
+        this.mImageUrls = imageUrls;
+        this.mContext = context;
     }
 
     @Override

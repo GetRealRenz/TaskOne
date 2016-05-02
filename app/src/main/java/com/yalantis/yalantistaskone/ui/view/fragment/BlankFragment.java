@@ -20,7 +20,6 @@ import com.yalantis.yalantistaskone.ui.presenter.TasksPresenter;
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,6 +28,8 @@ import butterknife.ButterKnife;
  */
 public class BlankFragment extends BaseFragment implements TaskContract.View, BlankFragmentAdapter.ItemClickListener {
     private static final String STATUS = "status";
+    private TaskContract.Presenter mPresenter;
+
 
     public BlankFragment() {
         // Required empty public constructor
@@ -51,9 +52,9 @@ public class BlankFragment extends BaseFragment implements TaskContract.View, Bl
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-        TaskContract.Presenter Presenter = new TasksPresenter();
-        Presenter.attachView(this);
-        Presenter.loadModel(getArguments().getInt(STATUS));
+        mPresenter = new TasksPresenter();
+        mPresenter.attachView(this);
+        mPresenter.loadModel(getArguments().getInt(STATUS));
         // Inflate the layout for this fragment
         return view;
     }
@@ -74,5 +75,12 @@ public class BlankFragment extends BaseFragment implements TaskContract.View, Bl
     @Override
     public void onItemClick(DataModel model) {
         startActivity(DetailsActivity.newIntent(getContext(), model));
+    }
+
+    @Override
+    public void onDestroyView() {
+        mPresenter.detachView();
+        super.onDestroyView();
+
     }
 }

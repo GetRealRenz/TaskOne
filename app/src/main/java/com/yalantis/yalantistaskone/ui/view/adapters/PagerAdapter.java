@@ -20,7 +20,7 @@ public class PagerAdapter extends FragmentPagerAdapter {
     }
 
 
-    public void addFragment(android.support.v4.app.Fragment fragment, String title) {
+    public void addFragment(Fragment fragment, String title) {
         mFragments.add(fragment);
         mTitles.add(title);
     }

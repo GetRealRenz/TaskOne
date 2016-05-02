@@ -170,7 +170,7 @@
         <item name="android:focusableInTouchMode">true</item>
     </style>
 
-    <style name="CardView">
+    <style name="CardView" parent="BaseView">
         <item name="android:layout_height">@dimen/card_size</item>
         <item name="android:layout_width">match_parent</item>
     </style>

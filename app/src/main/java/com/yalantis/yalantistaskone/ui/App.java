@@ -3,7 +3,6 @@ package com.yalantis.yalantistaskone.ui;
 import android.app.Application;
 import android.content.Context;
 
-import com.yalantis.yalantistaskone.ui.util.InitMock;
 
 /**
  * Created by Антон on 18.04.2016.
