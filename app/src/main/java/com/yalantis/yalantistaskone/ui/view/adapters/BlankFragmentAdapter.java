@@ -9,9 +9,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.yalantis.yalantistaskone.R;
-import com.yalantis.yalantistaskone.ui.model.DataModel;
-import com.yalantis.yalantistaskone.ui.util.SecondsToDate;
+import com.yalantis.yalantistaskone.ui.model.Ticket;
+import com.yalantis.yalantistaskone.ui.util.Constants;
+import com.yalantis.yalantistaskone.ui.util.DateHelper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
@@ -22,12 +24,22 @@ import butterknife.OnClick;
  * Created by Антон on 10.04.2016.
  */
 public class BlankFragmentAdapter extends RecyclerView.Adapter<BlankFragmentAdapter.ViewHolder> {
-    private final List<DataModel> mModel;
+    private final List<Ticket> mModel;
     private final ItemClickListener mListener;
 
-    public BlankFragmentAdapter(List<DataModel> model, @Nullable ItemClickListener listener) {
+    public BlankFragmentAdapter(@Nullable ItemClickListener listener) {
         mListener = listener;
-        mModel = model;
+        mModel = new ArrayList<>();
+    }
+
+    public boolean isViewEmpty() {
+        return mModel.isEmpty();
+    }
+
+    public void addData(List<Ticket> newData) {
+        mModel.clear();
+        mModel.addAll(newData);
+        notifyDataSetChanged();
     }
 
     @Override
@@ -60,7 +72,7 @@ public class BlankFragmentAdapter extends RecyclerView.Adapter<BlankFragmentAdap
         @Bind(R.id.img_category)
         ImageView category;
         private final ItemClickListener mItemClickListener;
-        private DataModel mModel;
+        private Ticket mModel;
 
 
         public ViewHolder(View itemView, @Nullable ItemClickListener listener) {
@@ -69,15 +81,14 @@ public class BlankFragmentAdapter extends RecyclerView.Adapter<BlankFragmentAdap
             mItemClickListener = listener;
         }
 
-        public void bindData(DataModel data) {
+        public void bindData(Ticket data) {
             mModel = data;
-            SecondsToDate toDate = new SecondsToDate();
             title.setText(data.getTitle());
-            likes.setText(data.getLikes());
-            address.setText(data.getAddress());
-            date.setText(toDate.toDate(data.getDate()));
-            daysLeft.setText(toDate.toDate(data.getDaysleft()));
-            category.setImageDrawable(data.getCategory());
+            likes.setText(String.valueOf(data.getLikesCounter()));
+            address.setText(data.getComment());
+            date.setText(DateHelper.getFormattedDate(data.getStartDate() * Constants.MILLIS_MULT));
+            daysLeft.setText(DateHelper.getFormattedDate(data.getDeadline() * Constants.MILLIS_MULT));
+           // Picasso.with(context).load(data.getCategory().getId())
         }
 
         @OnClick(R.id.card_container)
@@ -90,6 +101,6 @@ public class BlankFragmentAdapter extends RecyclerView.Adapter<BlankFragmentAdap
 
 
     public interface ItemClickListener {
-        void onItemClick(DataModel model);
+        void onItemClick(Ticket model);
     }
 }

@@ -1,6 +1,6 @@
 package com.yalantis.yalantistaskone.ui.contract;
 
-import com.yalantis.yalantistaskone.ui.model.DataModel;
+import com.yalantis.yalantistaskone.ui.model.Ticket;
 
 import java.util.List;
 
@@ -9,10 +9,16 @@ import java.util.List;
  */
 public class TaskContract {
     public interface Presenter extends BaseMvpPresenter<View> {
-        void loadModel(int status);
+        void getTasks(int[] status, int offset);
+
+        void loadFromDb(int[] status);
     }
 
     public interface View extends BaseMvpView {
-        void addModel(List<DataModel> data);
+        void addModel(List<Ticket> data);
+
+        void showProgress();
+
+        void hideProgress();
     }
 }

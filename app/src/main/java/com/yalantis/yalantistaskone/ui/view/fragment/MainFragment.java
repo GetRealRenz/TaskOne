@@ -3,23 +3,18 @@ package com.yalantis.yalantistaskone.ui.view.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.yalantis.yalantistaskone.R;
-import com.yalantis.yalantistaskone.ui.util.Constants;
+import com.yalantis.yalantistaskone.ui.api.ApiSettings;
+import com.yalantis.yalantistaskone.ui.model.Ticket;
 import com.yalantis.yalantistaskone.ui.view.adapters.PagerAdapter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import butterknife.Bind;
-import butterknife.ButterKnife;
+import io.realm.Realm;
 
 /**
  * Created by Антон on 17.04.2016.
@@ -39,6 +34,10 @@ public class MainFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
+        Realm realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
+        realm.where(Ticket.class).findAll().deleteAllFromRealm();
+        realm.commitTransaction();
         initView();
         return view;
     }
@@ -51,9 +50,9 @@ public class MainFragment extends BaseFragment {
 
     private void setupPager(ViewPager pager) {
         PagerAdapter adapter = new PagerAdapter(getChildFragmentManager());
-        adapter.addFragment(BlankFragment.newInstance(Constants.STATUS_INWORK), getString(R.string.in_work));
-        adapter.addFragment(BlankFragment.newInstance(Constants.STATUS_DONE), getString(R.string.is_done));
-        adapter.addFragment(LastFragment.newInstance(Constants.STATUS_UNDONE), getString(R.string.undone));
+        adapter.addFragment(BlankFragment.newInstance(ApiSettings.IN_PROGRESS), getString(R.string.in_work));
+        adapter.addFragment(BlankFragment.newInstance(ApiSettings.DONE), getString(R.string.is_done));
+        adapter.addFragment(BlankFragment.newInstance(ApiSettings.UNDONE), getString(R.string.undone));
         pager.setAdapter(adapter);
     }
 

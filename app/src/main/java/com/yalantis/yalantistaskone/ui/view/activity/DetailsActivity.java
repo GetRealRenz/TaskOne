@@ -2,10 +2,8 @@ package com.yalantis.yalantistaskone.ui.view.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
@@ -14,17 +12,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.yalantis.yalantistaskone.R;
-import com.yalantis.yalantistaskone.ui.util.Constants;
-import com.yalantis.yalantistaskone.ui.util.SecondsToDate;
-import com.yalantis.yalantistaskone.ui.view.adapters.ImageRecyclerAdapter;
 import com.yalantis.yalantistaskone.ui.contract.TaskDetailContract;
-import com.yalantis.yalantistaskone.ui.model.DataModel;
+import com.yalantis.yalantistaskone.ui.model.Performer;
+import com.yalantis.yalantistaskone.ui.model.Ticket;
+import com.yalantis.yalantistaskone.ui.model.TicketFiles;
 import com.yalantis.yalantistaskone.ui.presenter.TaskDetailPresenter;
+import com.yalantis.yalantistaskone.ui.util.Constants;
+import com.yalantis.yalantistaskone.ui.util.DateHelper;
+import com.yalantis.yalantistaskone.ui.view.adapters.ImageRecyclerAdapter;
+
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class DetailsActivity extends AppCompatActivity implements TaskDetailContract.View {
+public class DetailsActivity extends BaseActivity implements TaskDetailContract.View {
 
     public static final String KEY_MODEL = "model";
 
@@ -45,17 +47,11 @@ public class DetailsActivity extends AppCompatActivity implements TaskDetailCont
     @Bind(R.id.tx_responsible)
     TextView responsible;
     /*Dummy image Urls*/
-    private final static String[] mImageUrls = {
-            "http://i.imgur.com/rFLNqWI.jpg",
-            "http://i.imgur.com/C9pBVt7.jpg",
-            "http://i.imgur.com/rT5vXE1.jpg",
-            "http://i.imgur.com/aIy5R2k.jpg",
-    };
     private TaskDetailContract.Presenter mPresenter;
 
-    public static Intent newIntent(@NonNull Context context, @NonNull DataModel model) {
+    public static Intent newIntent(@NonNull Context context, @NonNull long id) {
         Intent intent = new Intent(context, DetailsActivity.class);
-        intent.putExtra(KEY_MODEL, model);
+        intent.putExtra(KEY_MODEL, id);
         return intent;
     }
 
@@ -65,12 +61,12 @@ public class DetailsActivity extends AppCompatActivity implements TaskDetailCont
         setContentView(R.layout.activity_details);
         mPresenter = new TaskDetailPresenter();
         mPresenter.attachView(this);
-        DataModel model = getIntent().getParcelableExtra(KEY_MODEL);
+        long id = getIntent().getLongExtra(KEY_MODEL, 0);
+
         ButterKnife.bind(this);
-        bindData(model);
+        mPresenter.getTicket(id);
         if (getSupportActionBar() != null)
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        initRecycler();
     }
 
 
@@ -93,15 +89,19 @@ public class DetailsActivity extends AppCompatActivity implements TaskDetailCont
         Toast.makeText(this, view.getClass().getSimpleName(), Toast.LENGTH_SHORT).show();
     }
 
-    private void bindData(DataModel data) {
-        SecondsToDate date = new SecondsToDate();
+    @Override
+    public void bindData(Ticket data) {
         title.setText(data.getTitle());
-        created.setText(date.toDate(data.getDate()));
-        daysLeft.setText(date.toDate(data.getDaysleft()));
-        description.setText(data.getDescription());
-        registred.setText(date.toDate(data.getRegistred()));
-        responsible.setText(data.getResponsible());
-        switch (data.getStatus()) {
+        created.setText(DateHelper.getFormattedDate(data.getStartDate() * Constants.MILLIS_MULT));
+        daysLeft.setText(DateHelper.getFormattedDate(data.getDeadline() * Constants.MILLIS_MULT));
+        description.setText(data.getBody());
+        registred.setText(DateHelper.getFormattedDate(data.getCreated() * Constants.MILLIS_MULT));
+        if (!(data.getPerformers() == null)) {
+            for (Performer performer : data.getPerformers()) {
+                responsible.append(performer.getOrganization());
+            }
+        }
+        /*switch (data.getType().getTitle()) {
             case Constants.IN_WORK:
                 status.setText(Constants.IN_WORK);
                 status.setBackground(ContextCompat.getDrawable(this, R.drawable.textview_inwork));
@@ -114,18 +114,19 @@ public class DetailsActivity extends AppCompatActivity implements TaskDetailCont
                 status.setText(Constants.UNDONE);
                 status.setBackground(ContextCompat.getDrawable(this, R.drawable.textview_undone));
                 break;
-        }
+        }*/
 
     }
 
     /**
      * Init our Recycler View
      */
-    private void initRecycler() {
+    @Override
+    public void initRecycler(List<TicketFiles> images) {
         LinearLayoutManager manager = new LinearLayoutManager(this);
         manager.setOrientation(LinearLayoutManager.HORIZONTAL);
         mRecyclerView.setLayoutManager(manager);
-        mRecyclerView.setAdapter(new ImageRecyclerAdapter(mImageUrls, DetailsActivity.this));
+        mRecyclerView.setAdapter(new ImageRecyclerAdapter(images, DetailsActivity.this));
 
     }
 
@@ -136,7 +137,12 @@ public class DetailsActivity extends AppCompatActivity implements TaskDetailCont
 
     @Override
     protected void onDestroy() {
-        mPresenter.detachView();
+           mPresenter.detachView();
         super.onDestroy();
+    }
+
+    @Override
+    public int getFragmentContainer() {
+        return 0;
     }
 }

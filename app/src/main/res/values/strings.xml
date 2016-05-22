@@ -30,4 +30,6 @@
         <item>Usi zvernennya</item>
         <item>Zvernennya na mapi</item>
     </string-array>
+
+    <string name="facebook_app_id">868722999938543</string>
 </resources>
