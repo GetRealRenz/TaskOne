@@ -22,14 +22,20 @@ public class TaskDetailPresenter implements TaskDetailContract.Presenter {
         mView = null;
     }
 
+    /**
+     *  loads ticket from realm by id
+     * @param id of ticket
+     */
     @Override
     public void getTicket(long id) {
         App.getDataManager().getTicketById(id)
                 .subscribe(new Action1<Ticket>() {
                     @Override
                     public void call(Ticket ticket) {
-                        mView.initRecycler(ticket.getFiles());
-                        mView.bindData(ticket);
+                        if (mView != null) {
+                            mView.initRecycler(ticket.getFiles());
+                            mView.bindData(ticket);
+                        }
                     }
                 });
     }

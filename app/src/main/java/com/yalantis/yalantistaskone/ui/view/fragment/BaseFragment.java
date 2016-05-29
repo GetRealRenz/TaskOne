@@ -1,7 +1,6 @@
 package com.yalantis.yalantistaskone.ui.view.fragment;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +21,5 @@ public abstract class BaseFragment extends Fragment {
         return view;
     }
 
-    @Nullable
     public abstract int getLayout();
 }

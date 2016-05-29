@@ -13,12 +13,13 @@ import io.realm.annotations.PrimaryKey;
  */
 public class Category extends RealmObject implements Parcelable {
 
-
+    private static final String ID = "id";
+    private static final String NAME = "name";
     @PrimaryKey
-    @SerializedName("id")
+    @SerializedName(ID)
     private long id;
 
-    @SerializedName("name")
+    @SerializedName(NAME)
     private String name;
 
     public Category(long id, String name) {

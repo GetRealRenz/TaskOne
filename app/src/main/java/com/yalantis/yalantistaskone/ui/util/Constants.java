@@ -10,4 +10,11 @@ public class Constants {
     public static final String STORAGE_MAIN = "MainStorage.realm";
     public static final int MILLIS_MULT = 1000;
 
+    public static final int IN_WORK_ONE = 5;
+    public static final int DONE_ONE = 6;
+    public static final int DONE_TWO = 10;
+    public static final int UNDONE_ONE = 1;
+    public static final int UNDONE_TWO= 3;
+    public static final int UNDONE_THREE= 4;
+
 }

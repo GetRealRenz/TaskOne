@@ -19,6 +19,12 @@ import rx.schedulers.Schedulers;
 public class TasksPresenter implements TaskContract.Presenter {
     private TaskContract.View mView;
 
+    /**
+     * loads tickets by status and offset from REST
+     *
+     * @param status -status of ticket
+     * @param offset - offset of tickets
+     */
     @Override
     public void getTasks(int[] status, int offset) {
         App.getApiManager().getTasks(status, ApiSettings.DISPLAY_AMOUNT, offset)
@@ -38,12 +44,19 @@ public class TasksPresenter implements TaskContract.Presenter {
 
                     @Override
                     public void onNext(List<Ticket> dataModels) {
-                        App.getDataManager().saveTickesToDb(dataModels);
-                        mView.addModel(dataModels);
+                        if (!dataModels.isEmpty()) {
+                            App.getDataManager().saveTickesToDb(dataModels);
+                            mView.addModel(dataModels);
+                        }
                     }
                 });
     }
 
+    /**
+     * loads all cached tickets from realm by status
+     *
+     * @param status of ticket
+     */
     @Override
     public void loadFromDb(int[] status) {
         App.getDataManager().getTicketsByState(status)
@@ -51,6 +64,7 @@ public class TasksPresenter implements TaskContract.Presenter {
                     @Override
                     public void call(RealmResults<Ticket> tickets) {
                         mView.addModel(tickets);
+                        mView.hideProgress();
                     }
                 });
     }

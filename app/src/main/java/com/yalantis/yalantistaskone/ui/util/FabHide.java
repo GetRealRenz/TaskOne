@@ -7,8 +7,6 @@ import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.squareup.picasso.Picasso;
-
 /**
  * Created by Антон on 19.04.2016.
  */

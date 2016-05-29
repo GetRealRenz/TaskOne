@@ -1,21 +1,27 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+<android.support.v4.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/refresh"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/blank_recycler"
-        android:scrollbars="vertical"
-        android:layout_height="wrap_content"
-        style="@style/BaseView"/>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-    <ProgressBar
-        android:id="@+id/is_loading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/blank_recycler"
-        android:layout_centerHorizontal="true"
-        android:indeterminate="true"
-        android:visibility="gone"
-        android:layout_alignParentBottom="true"/>
-</RelativeLayout>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/blank_recycler"
+            style="@style/BaseView"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical"/>
 
+        <ProgressBar
+            android:id="@+id/is_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@id/blank_recycler"
+            android:layout_centerHorizontal="true"
+            android:indeterminate="true"
+            android:visibility="gone"/>
+    </RelativeLayout>
+</android.support.v4.widget.SwipeRefreshLayout>

@@ -14,6 +14,24 @@ import io.realm.annotations.PrimaryKey;
  */
 public class Ticket extends RealmObject implements Parcelable {
     public static final String ID = "id";
+    private static final String USER = "user";
+    private static final String TITLE = "title";
+    private static final String BODY = "body";
+    private static final String CREATED = "created_date";
+    private static final String COMPLETED = "completed_date";
+    private static final String START = "start_date";
+    private static final String STATE = "state";
+    private static final String MANAGER = "manager";
+    private static final String TICKET_ID = "ticket_id";
+    private static final String ADDRESS = "address";
+    private static final String COMMENT = "comment";
+    private static final String GEO = "geo_address";
+    private static final String LIKES = "likes_counter";
+    private static final String ANSWERS = "answers";
+    private static final String FILES = "files";
+    private static final String PERFORMERS = "performers";
+    private static final String DEADLINE = "deadline";
+
 
     public Ticket() {
     }
@@ -21,59 +39,59 @@ public class Ticket extends RealmObject implements Parcelable {
     @PrimaryKey
     @SerializedName(ID)
     private long id;
-    @SerializedName("user")
+    @SerializedName(USER)
     private User user;
 
-    @SerializedName("title")
+    @SerializedName(TITLE)
     private String title;
 
-    @SerializedName("body")
+    @SerializedName(BODY)
     private String body;
 
-    @SerializedName("created_date")
+    @SerializedName(CREATED)
     private long created;
 
-    @SerializedName("completed_date")
+    @SerializedName(COMPLETED)
     private long completed;
 
-    @SerializedName("start_date")
+    @SerializedName(START)
     private long startDate;
 
-    @SerializedName("state")
+    @SerializedName(STATE)
     private State state;
 
-    @SerializedName("manager")
+    @SerializedName(MANAGER)
     private Manager manager;
 
-    @SerializedName("ticket_id")
+    @SerializedName(TICKET_ID)
     private String ticketId;
 
-    @SerializedName("address")
+    @SerializedName(ADDRESS)
     private Address address;
 
-    @SerializedName("comment")
+    @SerializedName(COMMENT)
     private String comment;
 
     private Category category;
 
     private Type type;
 
-    @SerializedName("geo_address")
+    @SerializedName(GEO)
     private GeoAddress geoAddress;
 
-    @SerializedName("likes_counter")
+    @SerializedName(LIKES)
     private int likesCounter;
 
-    @SerializedName("answers")
+    @SerializedName(ANSWERS)
     private RealmList<TicketAnswer> answers;
 
-    @SerializedName("files")
+    @SerializedName(FILES)
     private RealmList<TicketFiles> files;
 
-    @SerializedName("performers")
+    @SerializedName(PERFORMERS)
     private RealmList<Performer> performers;
 
-    @SerializedName("deadline")
+    @SerializedName(DEADLINE)
     private long deadline;
 
     protected Ticket(Parcel in) {

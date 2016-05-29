@@ -13,7 +13,6 @@
     <string name="tx_responsible_value">Dnipropetrovsk MVK()</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="in_work">В роботі</string>
     <string name="is_done">Виконано</string>
     <string name="undone">Не виконано</string>
@@ -26,10 +25,8 @@
     <string name="drawer_open">Drawer open</string>
     <string name="drawer_close">Drawer closed</string>
     <string name="done">Виконано</string>
-    <string-array name="drawer_items">
-        <item>Usi zvernennya</item>
-        <item>Zvernennya na mapi</item>
-    </string-array>
 
     <string name="facebook_app_id">868722999938543</string>
+    <string name="no_address">Адреса не вибрана</string>
+    <string name="no_internet_error">No internet connection!! You may say see cached tickets</string>
 </resources>

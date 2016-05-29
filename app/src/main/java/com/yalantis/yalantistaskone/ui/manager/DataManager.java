@@ -4,12 +4,14 @@ import android.content.Context;
 
 import com.yalantis.yalantistaskone.ui.interfaces.Manager;
 import com.yalantis.yalantistaskone.ui.model.Ticket;
+import com.yalantis.yalantistaskone.ui.model.UserProfile;
 import com.yalantis.yalantistaskone.ui.util.Constants;
 
 import java.util.List;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
+import io.realm.RealmList;
 import io.realm.RealmResults;
 import io.realm.exceptions.RealmMigrationNeededException;
 import rx.Observable;
@@ -57,6 +59,7 @@ public class DataManager implements Manager {
                     .equalTo(STATE_ID, state)
                     .findAll().asObservable();
         }
+        RealmList<Ticket> tickets=new RealmList<>();
         return results;
     }
 
@@ -65,4 +68,27 @@ public class DataManager implements Manager {
                 .equalTo(ID, id)
                 .findFirst().asObservable();
     }
+
+    public void saveUserToDb(UserProfile user) {
+        mRealm.beginTransaction();
+        mRealm.copyToRealmOrUpdate(user);
+        mRealm.commitTransaction();
+    }
+
+    public Observable<UserProfile> getProfile() {
+        return mRealm.where(UserProfile.class)
+                .findFirst().asObservable();
+    }
+
+    public void clearTickets(int[] states) {
+        for (int state : states) {
+            mRealm.beginTransaction();
+            mRealm.where(Ticket.class)
+                    .equalTo(STATE_ID, state)
+                    .findAll().deleteAllFromRealm();
+            mRealm.commitTransaction();
+        }
+
+    }
+
 }

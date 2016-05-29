@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    style="@style/MainView"
-    android:background="@color/bgColor"
-    tools:context=".ui.view.activity.DetailsActivity">
+            xmlns:tools="http://schemas.android.com/tools"
+            style="@style/MainView"
+            android:background="@color/bgColor"
+            tools:context=".ui.view.activity.DetailsActivity">
 
     <RelativeLayout
         style="@style/RelativeStyle"
@@ -15,7 +15,7 @@
             style="@style/HeaderStyle"
             android:layout_marginBottom="@dimen/divider_margin_up_down"
             android:layout_marginTop="@dimen/divider_margin_up_down"
-            android:text="@string/tx_title" />
+            android:text="@string/tx_title"/>
 
         <TextView
             android:id="@+id/status"
@@ -23,20 +23,20 @@
             android:layout_below="@+id/title"
             android:paddingLeft="@dimen/in_work_padding"
             android:paddingRight="@dimen/in_work_padding"
-            android:text="@string/tx_status" />
+            android:text="@string/tx_status"/>
 
         <View
             android:id="@+id/divider1"
             style="@style/MyDivider"
             android:layout_below="@+id/status"
             android:layout_marginBottom="@dimen/divider_margin_up_down"
-            android:layout_marginTop="@dimen/divider_margin_up_down" />
+            android:layout_marginTop="@dimen/divider_margin_up_down"/>
 
         <TextView
             android:id="@+id/created"
             style="@style/TitleStyle"
             android:layout_below="@+id/divider1"
-            android:text="@string/tx_created" />
+            android:text="@string/tx_created"/>
 
         <TextView
             android:id="@+id/dt_created"
@@ -44,20 +44,20 @@
             android:layout_alignEnd="@+id/divider1"
             android:layout_alignRight="@+id/divider1"
             android:layout_alignTop="@+id/created"
-            android:text="@string/tx_created_value" />
+            android:text="@string/tx_created_value"/>
 
         <View
             android:id="@+id/divider2"
             style="@style/MyDivider"
             android:layout_below="@+id/created"
             android:layout_marginBottom="@dimen/divider_margin_up_down"
-            android:layout_marginTop="@dimen/divider_margin_up_down" />
+            android:layout_marginTop="@dimen/divider_margin_up_down"/>
 
         <TextView
             android:id="@+id/registered"
             style="@style/TitleStyle"
             android:layout_below="@id/divider2"
-            android:text="@string/tx_registred" />
+            android:text="@string/tx_registred"/>
 
         <TextView
             android:id="@+id/dt_registered"
@@ -65,20 +65,20 @@
             android:layout_above="@+id/divider3"
             android:layout_alignEnd="@+id/divider2"
             android:layout_alignRight="@+id/divider2"
-            android:text="@string/tx_registred_value" />
+            android:text="@string/tx_registred_value"/>
 
         <View
             android:id="@+id/divider3"
             style="@style/MyDivider"
             android:layout_below="@+id/registered"
             android:layout_marginBottom="@dimen/divider_margin_up_down"
-            android:layout_marginTop="@dimen/divider_margin_up_down" />
+            android:layout_marginTop="@dimen/divider_margin_up_down"/>
 
         <TextView
             android:id="@+id/complete"
             style="@style/TitleStyle"
             android:layout_below="@id/divider3"
-            android:text="@string/tx_resolve" />
+            android:text="@string/tx_resolve"/>
 
         <TextView
             android:id="@+id/dt_left"
@@ -86,20 +86,20 @@
             android:layout_above="@+id/divider4"
             android:layout_alignEnd="@+id/divider3"
             android:layout_alignRight="@+id/divider3"
-            android:text="@string/tx_resolve_value" />
+            android:text="@string/tx_resolve_value"/>
 
         <View
             android:id="@+id/divider4"
             style="@style/MyDivider"
             android:layout_below="@+id/complete"
             android:layout_marginBottom="@dimen/divider_margin_up_down"
-            android:layout_marginTop="@dimen/divider_margin_up_down" />
+            android:layout_marginTop="@dimen/divider_margin_up_down"/>
 
         <TextView
             android:id="@+id/responsible"
             style="@style/TitleStyle"
             android:layout_below="@id/divider4"
-            android:text="@string/tx_responsible" />
+            android:text="@string/tx_responsible"/>
 
         <TextView
             android:id="@+id/tx_responsible"
@@ -107,26 +107,26 @@
             android:layout_above="@+id/divider5"
             android:layout_alignEnd="@+id/divider4"
             android:layout_alignRight="@+id/divider4"
-            android:text="@string/tx_responsible_value" />
+            android:text="@string/tx_responsible_value"/>
 
         <View
             android:id="@+id/divider5"
             style="@style/MyDivider"
             android:layout_below="@+id/responsible"
             android:layout_marginBottom="@dimen/divider_margin_up_down"
-            android:layout_marginTop="@dimen/divider_margin_up_down" />
+            android:layout_marginTop="@dimen/divider_margin_up_down"/>
 
         <TextView
             android:id="@+id/some_text"
             style="@style/SomeTextStyle"
             android:layout_below="@id/divider5"
             android:paddingBottom="@dimen/divider_margin_up_down"
-            android:text="@string/tx_sometext" />
+            android:text="@string/tx_sometext"/>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/image_recycler_view"
             style="@style/RecyclerStyle"
             android:layout_alignParentBottom="true"
-            android:layout_below="@+id/some_text" />
+            android:layout_below="@+id/some_text"/>
     </RelativeLayout>
 </ScrollView>

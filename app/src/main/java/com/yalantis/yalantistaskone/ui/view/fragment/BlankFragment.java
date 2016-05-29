@@ -4,19 +4,23 @@ package com.yalantis.yalantistaskone.ui.view.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.yalantis.yalantistaskone.R;
+import com.yalantis.yalantistaskone.ui.App;
 import com.yalantis.yalantistaskone.ui.api.ApiSettings;
 import com.yalantis.yalantistaskone.ui.contract.TaskContract;
 import com.yalantis.yalantistaskone.ui.model.Ticket;
 import com.yalantis.yalantistaskone.ui.presenter.TasksPresenter;
 import com.yalantis.yalantistaskone.ui.util.EndlessScrollListener;
+import com.yalantis.yalantistaskone.ui.util.Helpers;
 import com.yalantis.yalantistaskone.ui.view.activity.DetailsActivity;
 import com.yalantis.yalantistaskone.ui.view.adapters.BlankFragmentAdapter;
 
@@ -35,6 +39,8 @@ public class BlankFragment extends BaseFragment implements TaskContract.View, Bl
     private BlankFragmentAdapter mAdapter;
     @Bind(R.id.is_loading)
     ProgressBar loading;
+    @Bind(R.id.refresh)
+    SwipeRefreshLayout mRefreshLayout;
 
     @Override
     public void onResume() {
@@ -68,9 +74,23 @@ public class BlankFragment extends BaseFragment implements TaskContract.View, Bl
         mPresenter.attachView(this);
         iniRecycler();
         showProgress();
-        int[] arr = getArguments().getIntArray(STATUS);
-        mPresenter.loadFromDb(getArguments().getIntArray(STATUS));
-        if (mAdapter.isViewEmpty()) {
+
+        mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                showProgress();
+                mPresenter.getTasks(getArguments().getIntArray(STATUS), ApiSettings.START_OFFSET);
+                mAdapter.clear();
+                mRefreshLayout.setRefreshing(false);
+                hideProgress();
+            }
+        });
+
+        if (!Helpers.hasInternet(getContext())) {
+            mPresenter.loadFromDb(getArguments().getIntArray(STATUS));
+            Toast.makeText(getContext(), R.string.no_internet_error, Toast.LENGTH_LONG).show();
+        } else {
+            App.getDataManager().clearTickets(getArguments().getIntArray(STATUS));
             mPresenter.getTasks(getArguments().getIntArray(STATUS), ApiSettings.START_OFFSET);
         }
         // Inflate the layout for this fragment
@@ -101,7 +121,7 @@ public class BlankFragment extends BaseFragment implements TaskContract.View, Bl
 
     private void iniRecycler() {
         LinearLayoutManager manager = new LinearLayoutManager(getContext());
-        mAdapter = new BlankFragmentAdapter(this);
+        mAdapter = new BlankFragmentAdapter(this, getContext());
         mRecyclerView.setLayoutManager(manager);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.addOnScrollListener(new EndlessScrollListener(manager) {
@@ -115,7 +135,6 @@ public class BlankFragment extends BaseFragment implements TaskContract.View, Bl
 
     @Override
     public void onItemClick(Ticket model) {
-        long id = model.getId();
         startActivity(DetailsActivity.newIntent(getContext(), model.getId()));
     }
 

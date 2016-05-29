@@ -4,7 +4,6 @@ import android.app.Application;
 import android.content.Context;
 
 import com.facebook.FacebookSdk;
-import com.facebook.Profile;
 import com.yalantis.yalantistaskone.ui.manager.ApiManager;
 import com.yalantis.yalantistaskone.ui.manager.DataManager;
 import com.yalantis.yalantistaskone.ui.model.Migration;
@@ -28,7 +27,6 @@ public class App extends Application {
         sContext = getApplicationContext();
         setupRealmDefaultInstance();
         FacebookSdk.sdkInitialize(getContext());
-        Profile profile=Profile.getCurrentProfile();
     }
 
     public static DataManager getDataManager() {
@@ -50,6 +48,7 @@ public class App extends Application {
 
     public void clear() {
         sDataManager = null;
+        sApiManager = null;
     }
 
 

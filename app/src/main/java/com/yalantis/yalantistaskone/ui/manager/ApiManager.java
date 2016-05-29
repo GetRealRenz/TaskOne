@@ -2,8 +2,6 @@ package com.yalantis.yalantistaskone.ui.manager;
 
 import android.content.Context;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.yalantis.yalantistaskone.ui.api.ApiSettings;
 import com.yalantis.yalantistaskone.ui.api.service.TasksService;
 import com.yalantis.yalantistaskone.ui.interfaces.Manager;
@@ -23,12 +21,10 @@ public class ApiManager implements Manager {
 
     private Retrofit mRetrofit;
 
-    private Gson mGson;
     private TasksService mTasksService;
 
     @Override
     public void init(Context context) {
-        initGson();
         initRetrofit();
         initService();
     }
@@ -51,11 +47,6 @@ public class ApiManager implements Manager {
                 .build();
     }
 
-    private void initGson() {
-        GsonBuilder builder = new GsonBuilder();
-        builder.serializeNulls();
-        mGson = builder.create();
-    }
 
     public Observable<List<Ticket>> getTasks(int[] status, int amount, int ofset) {
         return mTasksService.getTasks(status, amount, ofset);

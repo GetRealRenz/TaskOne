@@ -6,12 +6,16 @@ import android.support.v7.widget.RecyclerView;
 /**
  * Created by Антон on 22.05.2016.
  */
+
+/**
+ * Endless scroll listener for recycler view
+ */
 public abstract class EndlessScrollListener extends RecyclerView.OnScrollListener {
     private int mPrevious = 0;
     private boolean isLoading = true;
     private int mCurrent = 0;
     private static final int OFFSET = 20;
-    private LinearLayoutManager mLayoutManager;
+    private final LinearLayoutManager mLayoutManager;
 
     public EndlessScrollListener(LinearLayoutManager layoutManager) {
         mLayoutManager = layoutManager;
@@ -33,8 +37,6 @@ public abstract class EndlessScrollListener extends RecyclerView.OnScrollListene
             mCurrent += OFFSET;
             onLoadMore(mCurrent);
             isLoading = true;
-            recyclerView.smoothScrollToPosition(mLayoutManager.getItemCount() - OFFSET);
-
         }
     }
 

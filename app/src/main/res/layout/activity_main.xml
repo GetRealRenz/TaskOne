@@ -27,15 +27,12 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab_add"
             style="@style/Fab"
-
             app:fabSize="normal"
             app:layout_behavior="com.yalantis.yalantistaskone.ui.util.FabHide" />
     </android.support.design.widget.CoordinatorLayout>
 
     <android.support.design.widget.NavigationView
-        android:id="@+id/drawer_view"
         style="@style/NavigationView"
         app:headerLayout="@layout/nav_header"
         app:itemTextColor="@android:color/black"

@@ -13,8 +13,8 @@
 
     <ImageView
         android:id="@+id/profile_picture"
-        android:layout_width="@dimen/profile_pic_size"
-        android:layout_height="@dimen/profile_pic_size"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         android:layout_below="@+id/tool_bar"
         android:layout_centerHorizontal="true"/>
 
@@ -42,10 +42,10 @@
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_name"
                 android:drawablePadding="@dimen/draw_padding"
+                android:drawableTint="@android:color/white"
                 android:textColor="@android:color/white"
-                android:textSize="@dimen/profile_text_size"
+                android:textSize="20sp"
                 tools:text="Степаненко Тарас Миколайович"/>
-
 
             <TextView
                 android:id="@+id/text_view_last_name"
@@ -53,10 +53,10 @@
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_name"
                 android:drawablePadding="@dimen/draw_padding"
+                android:drawableTint="@android:color/white"
                 android:textColor="@android:color/white"
-                android:textSize="@dimen/profile_text_size"
+                android:textSize="20sp"
                 tools:text="Степаненко Тарас Миколайович"/>
-
 
         </LinearLayout>
 

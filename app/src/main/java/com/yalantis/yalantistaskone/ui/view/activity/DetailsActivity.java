@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
@@ -13,7 +14,6 @@ import android.widget.Toast;
 
 import com.yalantis.yalantistaskone.R;
 import com.yalantis.yalantistaskone.ui.contract.TaskDetailContract;
-import com.yalantis.yalantistaskone.ui.model.Performer;
 import com.yalantis.yalantistaskone.ui.model.Ticket;
 import com.yalantis.yalantistaskone.ui.model.TicketFiles;
 import com.yalantis.yalantistaskone.ui.presenter.TaskDetailPresenter;
@@ -46,7 +46,6 @@ public class DetailsActivity extends BaseActivity implements TaskDetailContract.
     TextView registred;
     @Bind(R.id.tx_responsible)
     TextView responsible;
-    /*Dummy image Urls*/
     private TaskDetailContract.Presenter mPresenter;
 
     public static Intent newIntent(@NonNull Context context, @NonNull long id) {
@@ -88,33 +87,36 @@ public class DetailsActivity extends BaseActivity implements TaskDetailContract.
     public void onViewClick(View view) {
         Toast.makeText(this, view.getClass().getSimpleName(), Toast.LENGTH_SHORT).show();
     }
-
     @Override
     public void bindData(Ticket data) {
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(data.getTicketId());
+        }
         title.setText(data.getTitle());
         created.setText(DateHelper.getFormattedDate(data.getStartDate() * Constants.MILLIS_MULT));
         daysLeft.setText(DateHelper.getFormattedDate(data.getDeadline() * Constants.MILLIS_MULT));
         description.setText(data.getBody());
         registred.setText(DateHelper.getFormattedDate(data.getCreated() * Constants.MILLIS_MULT));
-        if (!(data.getPerformers() == null)) {
-            for (Performer performer : data.getPerformers()) {
-                responsible.append(performer.getOrganization());
-            }
+        if(!data.getPerformers().isEmpty()) {
+            responsible.setText(data.getPerformers().get(0).getOrganization());
         }
-        /*switch (data.getType().getTitle()) {
-            case Constants.IN_WORK:
-                status.setText(Constants.IN_WORK);
+        switch ((int) data.getState().getId()) {
+            case Constants.IN_WORK_ONE:
+                status.setText(getString(R.string.in_work));
                 status.setBackground(ContextCompat.getDrawable(this, R.drawable.textview_inwork));
                 break;
-            case Constants.DONE:
-                status.setText(Constants.DONE);
+            case Constants.DONE_ONE:
+            case Constants.DONE_TWO:
+                status.setText(getString(R.string.done));
                 status.setBackground(ContextCompat.getDrawable(this, R.drawable.textview_done));
                 break;
-            case Constants.UNDONE:
-                status.setText(Constants.UNDONE);
+            case Constants.UNDONE_ONE:
+            case Constants.UNDONE_TWO:
+            case Constants.UNDONE_THREE:
+                status.setText(getString(R.string.undone));
                 status.setBackground(ContextCompat.getDrawable(this, R.drawable.textview_undone));
                 break;
-        }*/
+        }
 
     }
 
@@ -125,8 +127,12 @@ public class DetailsActivity extends BaseActivity implements TaskDetailContract.
     public void initRecycler(List<TicketFiles> images) {
         LinearLayoutManager manager = new LinearLayoutManager(this);
         manager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        mRecyclerView.setLayoutManager(manager);
-        mRecyclerView.setAdapter(new ImageRecyclerAdapter(images, DetailsActivity.this));
+        if (images.isEmpty()) {
+            mRecyclerView.setVisibility(View.GONE);
+        } else {
+            mRecyclerView.setLayoutManager(manager);
+            mRecyclerView.setAdapter(new ImageRecyclerAdapter(images, DetailsActivity.this));
+        }
 
     }
 
@@ -137,7 +143,7 @@ public class DetailsActivity extends BaseActivity implements TaskDetailContract.
 
     @Override
     protected void onDestroy() {
-           mPresenter.detachView();
+        mPresenter.detachView();
         super.onDestroy();
     }
 

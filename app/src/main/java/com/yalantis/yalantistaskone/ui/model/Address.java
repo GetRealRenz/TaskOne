@@ -1,5 +1,7 @@
 package com.yalantis.yalantistaskone.ui.model;
 
+import android.text.TextUtils;
+
 import com.google.gson.annotations.SerializedName;
 
 import io.realm.RealmObject;
@@ -16,6 +18,17 @@ public class Address extends RealmObject {
     public static final String HOUSE = "house";
     public static final String FLAT = "flat";
 
+    public static String getFullAddress(Address address) {
+        if (address == null) {
+            return "";
+        }
+        String addressLabel = address.getCity() == null || address.getStreet() == null ? "" :
+                address.getCity().getTitle() + ", " + address.getStreet().getName();
+        if (address.getHouse() != null && !TextUtils.isEmpty(address.getHouse().getName())) {
+            addressLabel += ", " + address.getHouse().getName();
+        }
+        return addressLabel;
+    }
 
     @PrimaryKey
     @SerializedName(ID)

@@ -10,11 +10,9 @@ import android.view.ViewGroup;
 
 import com.yalantis.yalantistaskone.R;
 import com.yalantis.yalantistaskone.ui.api.ApiSettings;
-import com.yalantis.yalantistaskone.ui.model.Ticket;
 import com.yalantis.yalantistaskone.ui.view.adapters.PagerAdapter;
 
 import butterknife.Bind;
-import io.realm.Realm;
 
 /**
  * Created by Антон on 17.04.2016.
@@ -34,10 +32,6 @@ public class MainFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-        Realm realm = Realm.getDefaultInstance();
-        realm.beginTransaction();
-        realm.where(Ticket.class).findAll().deleteAllFromRealm();
-        realm.commitTransaction();
         initView();
         return view;
     }

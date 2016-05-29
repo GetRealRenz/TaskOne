@@ -18,6 +18,7 @@
             android:layout_width="@dimen/img_width"
             android:layout_marginBottom="@dimen/marg_cat_bot"
             android:layout_marginTop="@dimen/marg_cat_top"
+            android:src="@drawable/ic_doc"
             android:tint="@color/gray"
             />
 
@@ -27,7 +28,7 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_toLeftOf="@+id/dividerItem"
-            android:drawableLeft="@drawable/ic_like"
+            android:drawableLeft="@drawable/ic_thumb_gray"
             android:drawablePadding="@dimen/drawable_padding"
             android:paddingBottom="@dimen/likes_padding"
             android:paddingLeft="@dimen/likes_padding"
@@ -50,6 +51,7 @@
             android:layout_alignTop="@id/img_category"
             android:layout_marginRight="@dimen/title_right"
             android:layout_toRightOf="@id/dividerItem"
+            android:maxLines="2"
             />
 
         <TextView
@@ -57,13 +59,14 @@
             style="@style/Tx"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@id/tx_title"
+            android:layout_alignLeft="@id/tx_title"
             android:layout_below="@id/tx_title"
             android:layout_marginTop="@dimen/addr_mrg_top"
-            android:layout_toEndOf="@id/dividerItem"
+            android:layout_toRightOf="@id/dividerItem"
             android:ellipsize="end"
+            android:maxLength="30"
             android:singleLine="true"
-            android:textColor="#d8d8d8"
+            android:textColor="@android:color/darker_gray"
             />
 
         <TextView

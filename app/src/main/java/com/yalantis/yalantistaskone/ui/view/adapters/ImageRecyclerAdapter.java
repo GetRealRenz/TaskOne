@@ -24,8 +24,8 @@ import butterknife.ButterKnife;
  */
 public class ImageRecyclerAdapter extends RecyclerView.Adapter<ImageRecyclerAdapter.ViewHolder> {
 
-    List<TicketFiles> mImageUrls;
-    private Context mContext;
+    final List<TicketFiles> mImageUrls;
+    private final Context mContext;
     private static final int IMAGE_WIDTH = 160;
     private static final int IMAGE_HEIGHT = 180;
 
@@ -72,7 +72,8 @@ public class ImageRecyclerAdapter extends RecyclerView.Adapter<ImageRecyclerAdap
 
         public void bindData(TicketFiles image, final Context context) {
             String path = Constants.URL_IMAGE + image.getFilename();
-            Picasso.with(context).load(path).resize(IMAGE_WIDTH, IMAGE_HEIGHT).centerCrop()
+            Picasso.with(context).load(path).placeholder(R.drawable.placeholder).
+                    resize(IMAGE_WIDTH, IMAGE_HEIGHT).centerCrop()
                     .into(mImageView);
             mImageView.setOnClickListener(new View.OnClickListener() {
                 @Override

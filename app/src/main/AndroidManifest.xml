@@ -3,6 +3,8 @@
           package="com.yalantis.yalantistaskone">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
 
     <supports-screens
         android:largeScreens="true"
@@ -21,16 +23,27 @@
             android:value="@string/facebook_app_id"/>
 
         <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+
+        <activity
             android:name=".ui.view.activity.DetailsActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme"/>
-        <activity android:name=".ui.view.activity.MainActivity">
+        <activity
+            android:name=".ui.view.activity.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".ui.view.activity.ProfileActivity">
+        <activity
+            android:name=".ui.view.activity.ProfileActivity"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 

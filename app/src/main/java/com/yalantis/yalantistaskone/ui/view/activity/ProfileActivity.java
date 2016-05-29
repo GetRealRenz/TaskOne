@@ -1,50 +1,78 @@
 package com.yalantis.yalantistaskone.ui.view.activity;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.facebook.login.widget.ProfilePictureView;
+import com.squareup.picasso.Picasso;
 import com.yalantis.yalantistaskone.R;
-import com.yalantis.yalantistaskone.ui.model.User;
-import com.yalantis.yalantistaskone.ui.util.DateHelper;
+import com.yalantis.yalantistaskone.ui.contract.ProfileContract;
+import com.yalantis.yalantistaskone.ui.model.UserProfile;
+import com.yalantis.yalantistaskone.ui.presenter.ProfilePresenter;
+import com.yalantis.yalantistaskone.ui.util.RoundBitmapTransformation;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class ProfileActivity extends BaseActivity {
+public class ProfileActivity extends BaseActivity implements ProfileContract.View {
     @Bind(R.id.profile_picture)
-    ProfilePictureView mProfilePicture;
+    ImageView mProfilePicture;
     @Bind(R.id.text_view_first_name)
     TextView mFirstName;
     @Bind(R.id.text_view_last_name)
     TextView mLastName;
-    @Bind(R.id.text_view_birthdate)
-    TextView mBirthdate;
-    @Bind(R.id.text_view_phone)
-    TextView mPhone;
-    @Bind(R.id.text_view_email)
-    TextView mEmail;
+    private ProfileContract.Presenter mPresenter;
+
+    public ProfileActivity() {
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         ButterKnife.bind(this);
-        bindData();
+        mPresenter = new ProfilePresenter();
+        mPresenter.attachView(this);
+        mPresenter.getProfile();
+
     }
 
-    private void bindData() {
-        User user = new User();
-        mFirstName.setText(user.getFirstName());
-        mLastName.setText(user.getLastName());
-        mEmail.setText(user.getEmail());
-        mPhone.setText(user.getPhone());
-        mBirthdate.setText(DateHelper.getFormattedDate(user.getBirthdayMillis()));
-        mProfilePicture.setProfileId(String.valueOf(user.getId()));
-    }
 
     @Override
     public int getFragmentContainer() {
         return 0;
+    }
+
+    @Override
+    public void showProfile(UserProfile profile) {
+        mFirstName.setText(profile.getFirstName());
+        mLastName.setText(profile.getLastName());
+        Picasso.with(ProfileActivity.this).load(profile.getImageUrl())
+                .transform(new RoundBitmapTransformation()).into(mProfilePicture);
+    }
+
+    @Override
+    public Context getContext() {
+        return this;
+    }
+
+    @Override
+    protected void onDestroy() {
+        mPresenter.detachView();
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mPresenter.attachView(this);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mPresenter.attachView(this);
     }
 }
