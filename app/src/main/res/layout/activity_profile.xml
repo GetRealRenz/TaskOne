@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     style="@style/RelativeStyle"
     android:background="@drawable/gradient_bg"
     android:gravity="center">
@@ -13,53 +12,25 @@
 
     <ImageView
         android:id="@+id/profile_picture"
-        android:layout_width="@dimen/profile_pic_size"
-        android:layout_height="@dimen/profile_pic_size"
+        style="@style/Img.Profile"
         android:layout_below="@+id/tool_bar"
         android:layout_centerHorizontal="true"/>
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        style="@style/BaseView"
         android:layout_below="@+id/profile_picture">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            android:paddingBottom="@dimen/activity_vertical_margin"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin"
-            android:paddingTop="@dimen/activity_vertical_margin"
-            android:showDividers="middle">
-
+            style="@style/ProfileView">
 
             <TextView
                 android:id="@+id/text_view_first_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_name"
-                android:drawablePadding="@dimen/draw_padding"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/profile_text_size"
-                tools:text="Степаненко Тарас Миколайович"/>
-
+                style="@style/Tx.Profile"
+                />
 
             <TextView
                 android:id="@+id/text_view_last_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_name"
-                android:drawablePadding="@dimen/draw_padding"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/profile_text_size"
-                tools:text="Степаненко Тарас Миколайович"/>
-
-
+                style="@style/Tx.Profile"/>
         </LinearLayout>
-
     </ScrollView>
-
 </RelativeLayout>

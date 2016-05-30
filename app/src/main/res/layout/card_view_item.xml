@@ -14,12 +14,8 @@
 
         <ImageView
             android:id="@+id/img_category"
-            style="@style/Img"
-            android:layout_width="@dimen/img_width"
-            android:layout_marginBottom="@dimen/marg_cat_bot"
-            android:layout_marginTop="@dimen/marg_cat_top"
-            android:src="@drawable/ic_doc"
-            android:tint="@color/gray"
+            style="@style/Category"
+
             />
 
         <TextView
@@ -74,13 +70,13 @@
             style="@style/Tx.Date"
             android:layout_alignBaseline="@+id/days_left"
             android:layout_alignBottom="@+id/days_left"
-            android:layout_alignStart="@+id/tx_address"/>
+            android:layout_alignLeft="@+id/tx_address"/>
 
         <TextView
             android:id="@+id/days_left"
             style="@style/Tx.Date"
-            android:layout_alignEnd="@+id/tx_title"
             android:layout_alignParentBottom="true"
+            android:layout_alignRight="@+id/tx_title"
             android:layout_marginBottom="@dimen/deadline_mrg"/>
     </RelativeLayout>
 
