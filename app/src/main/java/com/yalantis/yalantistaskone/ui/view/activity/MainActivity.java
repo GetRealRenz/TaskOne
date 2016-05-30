@@ -6,13 +6,17 @@ import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
 import com.facebook.Profile;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
@@ -21,6 +25,8 @@ import com.yalantis.yalantistaskone.ui.App;
 import com.yalantis.yalantistaskone.ui.model.UserProfile;
 import com.yalantis.yalantistaskone.ui.util.Helpers;
 import com.yalantis.yalantistaskone.ui.view.fragment.MainFragment;
+
+import org.json.JSONObject;
 
 import java.util.Collections;
 
@@ -76,8 +82,10 @@ public class MainActivity extends BaseActivity {
     public void onLoginClick(MenuItem item) {
         if (!Helpers.isLoggedIn()) {
             signUp();
+        } else {
+            startActivity(new Intent(MainActivity.this, ProfileActivity.class));
         }
-        startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+
     }
 
     private void signUp() {
@@ -87,14 +95,23 @@ public class MainActivity extends BaseActivity {
                 new FacebookCallback<LoginResult>() {
                     @Override
                     public void onSuccess(LoginResult loginResult) {
-                        setUserProfile(Profile.getCurrentProfile()
-                                , loginResult.getAccessToken().getToken());
-
+                        final String token = loginResult.getAccessToken().getToken();
+                            GraphRequest.newMeRequest(
+                                    AccessToken.getCurrentAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
+                                        @Override
+                                        public void onCompleted(JSONObject json, GraphResponse response) {
+                                            {
+                                                setUserProfile(Profile.getCurrentProfile()
+                                                        , token);
+                                                startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+                                            }
+                                        }
+                                    }).executeAsync();
                     }
 
                     @Override
                     public void onCancel() {
-
+                        Log.d("Err", "cancel");
                     }
 
                     @Override

@@ -75,16 +75,6 @@ public class BlankFragment extends BaseFragment implements TaskContract.View, Bl
         iniRecycler();
         showProgress();
 
-        mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                showProgress();
-                mPresenter.getTasks(getArguments().getIntArray(STATUS), ApiSettings.START_OFFSET);
-                mAdapter.clear();
-                mRefreshLayout.setRefreshing(false);
-                hideProgress();
-            }
-        });
 
         if (!Helpers.hasInternet(getContext())) {
             mPresenter.loadFromDb(getArguments().getIntArray(STATUS));
@@ -129,6 +119,16 @@ public class BlankFragment extends BaseFragment implements TaskContract.View, Bl
             public void onLoadMore(int page) {
                 showProgress();
                 mPresenter.getTasks(getArguments().getIntArray(STATUS), page);
+            }
+        });
+        mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                showProgress();
+                mPresenter.getTasks(getArguments().getIntArray(STATUS), ApiSettings.START_OFFSET);
+                mAdapter.clear();
+                mRefreshLayout.setRefreshing(false);
+                hideProgress();
             }
         });
     }
